@@ -1,0 +1,66 @@
+  "checkout": {
+    "steps": {
+      "shipping": "Kohaletoimetamine",
+      "payment": "Makse",
+      "review": "Ülevaade"
+    },
+    "products": {
+      "theory_a": {
+        "name": "Teooriaõpe A",
+        "desc": "Baas teooriakursus"
+      },
+      "theory_b": {
+        "name": "Teooriaõpe B",
+        "desc": "Edasijõudnute teooriakursus"
+      },
+      "theory": {
+        "desc": "Teooriakursuse tasu"
+      },
+      "lessons_a": {
+        "name": "Sõidutunnid A",
+        "desc": "Baas sõidutunnid"
+      },
+      "lessons_b": {
+        "name": "Sõidutunnid B",
+        "desc": "Edasijõudnute sõidutunnid"
+      },
+      "lessons": {
+        "desc": "Ühe tunni hind"
+      },
+      "manual_a": {
+        "name": "Manuaalkäigukasti kursus A",
+        "desc": "Baas manuaalkäigukasti kursus"
+      },
+      "manual_b": {
+        "name": "Manuaalkäigukasti kursus B",
+        "desc": "Edasijõudnute manuaalkäigukasti kursus"
+      },
+      "manual": {
+        "desc": "Täielik kursus"
+      },
+      "final_course": {
+        "name": "Lõppkursus",
+        "desc": "Põhjalik lõppkursus"
+      }
+    },
+    "transmission_type": "Käigukasti tüüp",
+    "manual_transmission": "Manuaalkäigukasti kogusumma",
+    "automatic_transmission": "Automaatkäigukasti kogusumma",
+    "make_gift": "Tee kingituseks",
+    "gift_message": "Saadame kingisaajale ilusa kinkekaardi koos teie isikliku sõnumiga",
+    "recipient_email": "Saaja e-post",
+    "recipient_email_placeholder": "Sisestage saaja e-posti aadress",
+    "invalid_email": "Palun sisestage kehtiv e-posti aadress",
+    "review": {
+      "total": "Kokku"
+    },
+    "selected_products": "Valitud tooted",
+    "thank_you": "Täname teid tellimuse eest",
+    "order_number": "Teie tellimuse number on",
+    "email_confirmation": "Oleme saatnud teile tellimuse kinnituse e-postiga ja teavitame teid, kui teie tellimus on saadetud.",
+    "go_to_orders": "Mine minu tellimuste juurde",
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "place_order": "Esita tellimus",
+    "view_details": "Kuva üksikasjad"
+  } 
