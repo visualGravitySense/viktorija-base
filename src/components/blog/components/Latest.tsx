@@ -8,85 +8,89 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 
-const articleInfo = [
+const authors = [
+  { name: 'Remy Sharp' },
+  { name: 'Travis Howard' },
+];
+
+const cardData = [
   {
+    img: 'https://picsum.photos/800/450?random=1',
     tag: 'Engineering',
-    title: 'The future of AI in software engineering',
+    title: 'Revolutionizing software development with cutting-edge tools',
     description:
-      'Artificial intelligence is revolutionizing software engineering. Explore how AI-driven tools are enhancing development processes and improving software quality.',
-    authors: [
-      { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
-      { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
-    ],
+      'Our latest engineering tools are designed to streamline workflows and boost productivity. Discover how these innovations are transforming the software development landscape.',
+    authors: [{ name: 'Erica Johns' }],
   },
   {
+    img: 'https://picsum.photos/800/450?random=2',
     tag: 'Product',
-    title: 'Driving growth with user-centric product design',
+    title: 'Innovative product features that drive success',
     description:
-      'Our user-centric product design approach is driving significant growth. Learn about the strategies we employ to create products that resonate with users.',
-    authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
+      'Explore the product features that are setting new standards in the industry. Learn how these advancements are helping businesses achieve unprecedented growth.',
+    authors: [{ name: 'Kate Morrison' }],
   },
   {
-    tag: 'Design',
-    title: 'Embracing minimalism in modern design',
-    description:
-      'Minimalism is a key trend in modern design. Discover how our design team incorporates minimalist principles to create clean and impactful user experiences.',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
-  },
-  {
-    tag: 'Company',
-    title: 'Cultivating a culture of innovation',
-    description:
-      'Innovation is at the heart of our company culture. Learn about the initiatives we have in place to foster creativity and drive groundbreaking solutions.',
-    authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
-  },
-  {
-    tag: 'Engineering',
-    title: 'Advancing cybersecurity with next-gen solutions',
-    description:
-      'Our next-generation cybersecurity solutions are setting new standards in the industry. Discover how we protect our clients from evolving cyber threats.',
-    authors: [
-      { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
-      { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
-    ],
-  },
-  {
-    tag: 'Product',
-    title: 'Enhancing customer experience through innovation',
-    description:
-      'Our innovative approaches are enhancing customer experience. Learn about the new features and improvements that are delighting our users.',
-    authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
-  },
-  {
-    tag: 'Engineering',
-    title: 'Pioneering sustainable engineering solutions',
-    description:
-      "Learn about our commitment to sustainability and the innovative engineering solutions we're implementing to create a greener future. Discover the impact of our eco-friendly initiatives.",
-    authors: [
-      { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
-      { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
-    ],
-  },
-  {
-    tag: 'Product',
-    title: 'Maximizing efficiency with our latest product updates',
-    description:
-      'Our recent product updates are designed to help you maximize efficiency and achieve more. Get a detailed overview of the new features and improvements that can elevate your workflow.',
-    authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
-  },
-  {
+    img: 'https://picsum.photos/800/450?random=3',
     tag: 'Design',
     title: 'Designing for the future: trends and insights',
     description:
-      'Stay ahead of the curve with the latest design trends and insights. Our design team shares their expertise on creating intuitive and visually stunning user experiences.',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
+      'Stay ahead of the curve with the latest design trends and insights. Our design team shares their expertise on creating user experiences that captivate and engage.',
+    authors: [{ name: 'Cindy Baker' }],
   },
   {
+    img: 'https://picsum.photos/800/450?random=4',
     tag: 'Company',
-    title: "Our company's journey: milestones and achievements",
+    title: 'Our company culture: fostering innovation and growth',
     description:
-      "Take a look at our company's journey and the milestones we've achieved along the way. From humble beginnings to industry leader, discover our story of growth and success.",
-    authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
+      'Learn about the culture that drives our success. Discover how we foster innovation, encourage creativity, and support the growth of our team members.',
+    authors: [
+      { name: 'Agnes Walker' },
+      { name: 'Trevor Henderson' },
+    ],
+  },
+  {
+    img: 'https://picsum.photos/800/450?random=45',
+    tag: 'Engineering',
+    title: 'Engineering the future: our vision and roadmap',
+    description:
+      'Get an inside look at our engineering vision and the roadmap that guides our development. See how we are building the technologies of tomorrow.',
+    authors: [{ name: 'Travis Howard' }],
+  },
+  {
+    img: 'https://picsum.photos/800/450?random=6',
+    tag: 'Product',
+    title: 'Product management best practices for success',
+    description:
+      'Discover the best practices in product management that lead to successful product launches. Our product team shares insights from their experience.',
+    authors: [
+      { name: 'Agnes Walker' },
+      { name: 'Trevor Henderson' },
+    ],
+  },
+  {
+    img: 'https://picsum.photos/800/450?random=7',
+    tag: 'Design',
+    title: 'The art of user interface design',
+    description:
+      'Dive into the art of user interface design with our expert designers. Learn the principles and techniques that create intuitive and beautiful user interfaces.',
+    authors: [{ name: 'Travis Howard' }],
+  },
+  {
+    img: 'https://picsum.photos/800/450?random=8',
+    tag: 'Company',
+    title: 'Sustainability initiatives: our commitment to the planet',
+    description:
+      'Read about our sustainability initiatives and our commitment to environmental responsibility. Learn how we are making a positive impact on the planet.',
+    authors: [{ name: 'Kate Morrison' }],
+  },
+  {
+    img: 'https://picsum.photos/800/450?random=9',
+    tag: 'Engineering',
+    title: 'The future of artificial intelligence in our products',
+    description:
+      'Explore how artificial intelligence is being integrated into our products. Discover the exciting possibilities and the future of AI in our industry.',
+    authors: [{ name: 'Cindy Baker' }],
   },
 ];
 
@@ -135,7 +139,7 @@ const TitleTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
+function Author({ authors }: { authors: { name: string }[] }) {
   return (
     <Box
       sx={{
@@ -154,7 +158,6 @@ function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
             <Avatar
               key={index}
               alt={author.name}
-              src={author.avatar}
               sx={{ width: 24, height: 24 }}
             />
           ))}
@@ -187,7 +190,7 @@ export default function Latest() {
         Latest
       </Typography>
       <Grid container spacing={8} columns={12} sx={{ my: 4 }}>
-        {articleInfo.map((article, index) => (
+        {cardData.map((article, index) => (
           <Grid key={index} size={{ xs: 12, sm: 6 }}>
             <Box
               sx={{

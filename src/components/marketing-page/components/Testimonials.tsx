@@ -40,22 +40,22 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      avatar: '/static/images/avatar/1.jpg',
       name: t('testimonials.testimonial1.author'),
       occupation: t('testimonials.testimonial1.role'),
-      testimonial: t('testimonials.testimonial1.text')
+      testimonial: t('testimonials.testimonial1.text'),
+      initials: 'EK'
     },
     {
-      avatar: '/static/images/avatar/2.jpg',
       name: t('testimonials.testimonial2.author'),
       occupation: t('testimonials.testimonial2.role'),
-      testimonial: t('testimonials.testimonial2.text')
+      testimonial: t('testimonials.testimonial2.text'),
+      initials: 'MV'
     },
     {
-      avatar: '/static/images/avatar/3.jpg',
       name: t('testimonials.testimonial3.author'),
       occupation: t('testimonials.testimonial3.role'),
-      testimonial: t('testimonials.testimonial3.text')
+      testimonial: t('testimonials.testimonial3.text'),
+      initials: 'AS'
     }
   ];
 
@@ -117,7 +117,7 @@ export default function Testimonials() {
                 }}
               >
                 <CardHeader
-                  avatar={<Avatar alt={testimonial.name} src={testimonial.avatar} />}
+                  avatar={<Avatar>{testimonial.initials}</Avatar>}
                   title={testimonial.name}
                   subheader={testimonial.occupation}
                 />
