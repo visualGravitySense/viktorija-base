@@ -16,7 +16,7 @@ function App({ toggleColorMode }: AppProps) {
       minHeight: '100vh',
       width: '100%',
     }}>
-      <Router>
+      <Router basename="/viktorija-base">
         <Routes>
           <Route path="/" element={<MarketingPage toggleColorMode={toggleColorMode} />} />
           <Route path="/features" element={<Features toggleColorMode={toggleColorMode} />} />
