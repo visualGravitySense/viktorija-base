@@ -1,0 +1,255 @@
+{
+  "main": {
+    "id": "3436a4d089bf8c96",
+    "type": "split",
+    "children": [
+      {
+        "id": "0212696b42994b31",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4097c182e6950867",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Development/Content About Us page.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Content About Us page"
+            }
+          },
+          {
+            "id": "2ebd3c6af462bccc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Development/Content CTA ru.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Content CTA ru"
+            }
+          },
+          {
+            "id": "21aedd72504bfd9b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Development/Workflow plan.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Workflow plan"
+            }
+          },
+          {
+            "id": "bd445fa7ea81ca81",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Development/New Components.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "New Components"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9177b292b49c28a7",
+    "type": "split",
+    "children": [
+      {
+        "id": "455e795755457477",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "351c96830599d10a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "61ccf76ab2cdb8f9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "94f5b3adfee123a3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "be2d7b140e236a0d",
+    "type": "split",
+    "children": [
+      {
+        "id": "dad509ace2201d86",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d9a6b65600e176f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Development plan.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Development plan"
+            }
+          },
+          {
+            "id": "553ab1db236da9c3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Development plan.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Development plan"
+            }
+          },
+          {
+            "id": "50c0a378499eed16",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e1c060aae4e28c6b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Development plan.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Development plan"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "21aedd72504bfd9b",
+  "lastOpenFiles": [
+    "Development/Content About Us page.md",
+    "Development/Content CTA ru.md",
+    "Development/New Components.md",
+    "Development/Viktorija Sales Funnel.md",
+    "Creative Design.md",
+    "Development/Content Services page ru.md",
+    "Development/Content Main page ru.md",
+    "Development/Workflow plan.md",
+    "Development/New Pages.md",
+    "Pasted image 20250517223112.png",
+    "UI/design.md",
+    "Pasted image 20250517155320.png",
+    "Pasted image 20250517153851.png",
+    "Pasted image 20250517152702 1.png",
+    "Pasted image 20250517152702.png",
+    "Pasted image 20250517152701.png",
+    "Pasted image 20250517152649.png",
+    "Pasted image 20250517150754.png",
+    "Pasted image 20250517150648.png",
+    "Pasted image 20250517145634.png",
+    "cross-media.md",
+    "Development plan.md",
+    "landing-page.md",
+    "Development/ux_ui_guidelines.md",
+    "Development",
+    "New folder",
+    "UX/Human Decision Making/Buzzwords to lookout for/Nudge Theory.md",
+    "UX/Human Decision Making/Human Decision Making.md",
+    "UX/Human Decision Making/Buzzwords to lookout for",
+    "UX/Human Decision Making/Frameworks/Dual Process Theory.md",
+    "UX/Human Decision Making/Frameworks/Spectrum of thinking.md",
+    "UX/Human Decision Making/Frameworks/Action Funnel.md",
+    "UX/Human Decision Making/Frameworks/BJ-Fogg.md",
+    "product-desin/pos-pp.md",
+    "product-management/pos-pm-dinary.md",
+    "product-management/pos-pm.md",
+    "aI-assistance.md",
+    "pos-smart-features.pdf"
+  ]
+}

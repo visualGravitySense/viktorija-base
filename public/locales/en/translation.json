@@ -1,0 +1,66 @@
+  "checkout": {
+    "steps": {
+      "shipping": "Shipping",
+      "payment": "Payment",
+      "review": "Review"
+    },
+    "products": {
+      "theory_a": {
+        "name": "Theory Course A",
+        "desc": "Basic theory training"
+      },
+      "theory_b": {
+        "name": "Theory Course B",
+        "desc": "Advanced theory training"
+      },
+      "theory": {
+        "desc": "Theory course fee"
+      },
+      "lessons_a": {
+        "name": "Driving Lessons A",
+        "desc": "Basic driving lessons"
+      },
+      "lessons_b": {
+        "name": "Driving Lessons B",
+        "desc": "Advanced driving lessons"
+      },
+      "lessons": {
+        "desc": "Per lesson"
+      },
+      "manual_a": {
+        "name": "Manual Training A",
+        "desc": "Basic manual driving training"
+      },
+      "manual_b": {
+        "name": "Manual Training B",
+        "desc": "Advanced manual driving training"
+      },
+      "manual": {
+        "desc": "Complete course"
+      },
+      "final_course": {
+        "name": "Final Course",
+        "desc": "Comprehensive final driving course"
+      }
+    },
+    "transmission_type": "Transmission type",
+    "manual_transmission": "Manual transmission total",
+    "automatic_transmission": "Automatic transmission total",
+    "make_gift": "Make it a gift",
+    "gift_message": "We'll send a beautiful gift card with your personalized message to the recipient",
+    "recipient_email": "Recipient's email",
+    "recipient_email_placeholder": "Enter recipient's email address",
+    "invalid_email": "Please enter a valid email address",
+    "review": {
+      "total": "Total"
+    },
+    "selected_products": "Selected products",
+    "thank_you": "Thank you for your order",
+    "order_number": "Your order number is",
+    "email_confirmation": "We have emailed your order confirmation, and will send you an update when your order has shipped.",
+    "go_to_orders": "Go to my orders",
+    "previous": "Previous",
+    "next": "Next",
+    "place_order": "Place order",
+    "view_details": "View details"
+  } 
