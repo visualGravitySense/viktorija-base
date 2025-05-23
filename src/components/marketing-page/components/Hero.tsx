@@ -7,12 +7,13 @@ import Stack from '@mui/material/Stack';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
+import mainHeroImg from '/main-hero-1.jpg';
 
 interface HeroProps {
-  title?: string;
+  title: string;
   subtitle?: string;
-  description?: string;
-  buttonText?: string;
+  description: string;
+  buttonText: string;
   buttonLink?: string;
   imageUrl?: string;
   imageAlt?: string;
@@ -25,8 +26,8 @@ export default function Hero({
   description,
   buttonText,
   buttonLink = '/checkout?category=category-b',
-  imageUrl = '/main-hero-1.jpg',
-  imageAlt = '',
+  imageUrl = mainHeroImg,
+  imageAlt = 'Driving School Hero',
   translationKey = 'home'
 }: HeroProps) {
   const { t } = useTranslation();

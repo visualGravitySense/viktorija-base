@@ -5,6 +5,8 @@ import SEO from '../components/shared/SEO.tsx';
 import { CourseSchema } from '../components/shared/StructuredData.tsx';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import aCatImg from '/a-cat.jpg';
+import bCatImg from '/b-cat.jpg';
 
 interface CheckoutPageProps {
   disableCustomTheme?: boolean;
@@ -21,7 +23,7 @@ export default function CheckoutPage({ disableCustomTheme, toggleColorMode }: Ch
   let description = t('navigation.signup');
   let courseName = t('checkout.selected_products');
   let courseDescription = t('checkout.selected_products');
-  let courseImage = '/logo.png';
+  let courseImage = '';
   let coursePrice = 0;
   
   if (category === 'category-a') {
@@ -29,21 +31,21 @@ export default function CheckoutPage({ disableCustomTheme, toggleColorMode }: Ch
     description = t('painpoints.categories.a.description');
     courseName = t('painpoints.categories.a.title');
     courseDescription = t('painpoints.categories.a.description');
-    courseImage = '/a-cat.jpg';
+    courseImage = aCatImg;
     coursePrice = 570;
   } else if (category === 'category-b') {
     title = t('painpoints.categories.b.title');
     description = t('painpoints.categories.b.description');
     courseName = t('painpoints.categories.b.title');
     courseDescription = t('painpoints.categories.b.description');
-    courseImage = '/b-cat.jpg';
+    courseImage = bCatImg;
     coursePrice = 700;
   } else if (category === 'category-c') {
     title = t('painpoints.categories.c.title');
     description = t('painpoints.categories.c.description');
     courseName = t('painpoints.categories.c.title');
     courseDescription = t('painpoints.categories.c.description');
-    courseImage = '/final-cat-1.jpg';
+    courseImage = bCatImg;
     coursePrice = 150;
   }
   

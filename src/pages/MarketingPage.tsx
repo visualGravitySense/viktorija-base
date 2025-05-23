@@ -15,6 +15,9 @@ import PainPoints from '../components/marketing-page/components/PainPoints.tsx'
 import SEO from '../components/shared/SEO.tsx';
 import { LocalBusinessSchema, FAQSchema, CourseSchema } from '../components/shared/StructuredData.tsx';
 import { useTranslation } from 'react-i18next';
+import aCatImg from '/a-cat.jpg';
+import bCatImg from '/b-cat.jpg';
+import mainHeroImg from '/main-hero-1.jpg';
 
 interface MarketingPageProps {
   disableCustomTheme?: boolean;
@@ -54,12 +57,16 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
     ];
   }, [t]);
 
+  const ogImageUrl = import.meta.env.PROD 
+    ? 'https://visualgravitysense.github.io/viktorija-base' + mainHeroImg
+    : mainHeroImg;
+
   return (
     <AppTheme disableCustomTheme={disableCustomTheme}>
       <SEO 
         title={t('hero.home.title')}
         description={t('hero.home.description')}
-        ogImage="/main-hero-1.jpg"
+        ogImage={ogImageUrl}
         ogUrl="https://viktorijaautokool.ee"
         language={i18n.language}
         canonicalUrl="https://viktorijaautokool.ee"
@@ -108,7 +115,7 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
         description={t('painpoints.categories.b.description')}
         provider="Viktorija Autokool Nõmme"
         url="https://viktorijaautokool.ee/checkout?category=category-b"
-        image="/b-cat.jpg"
+        image={bCatImg}
         price={700}
       />
       
@@ -118,7 +125,7 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
       <Hero 
         translationKey="home"
         buttonLink="/checkout?category=category-b"
-        imageUrl="/main-hero-1.jpg"
+        imageUrl={mainHeroImg}
         imageAlt="Educational Platform"
       />
       {/* Hero categories info/price  */}
@@ -131,7 +138,7 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
               id: 'category-a',
               title: t('painpoints.categories.a.title'),
               description: t('painpoints.categories.a.description'),
-              imageUrl: '/a-cat.jpg',
+              imageUrl: aCatImg,
               price: {
                 theory: 120,
                 lesson: 45,
@@ -145,7 +152,7 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
               id: 'category-b',
               title: t('painpoints.categories.b.title'),
               description: t('painpoints.categories.b.description'),
-              imageUrl: '/b-cat.jpg',
+              imageUrl: bCatImg,
               price: {
                 theory: 150,
                 lesson: 50,

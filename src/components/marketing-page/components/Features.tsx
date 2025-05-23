@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
 import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
+import creditPreviewImg from '/credit-preview.png';
 
 interface FeatureItem {
   icon: React.ReactNode;
@@ -227,8 +228,8 @@ function getFeatureItems(t: any): FeatureItem[] {
       title: t('features.feature5'),
       description: t('features.feature5_desc'),
       note: t('features.feature5_desc'),
-      imageLight: `url("/credit-preview.png")`,
-      imageDark: `url("/credit-preview.png")`,
+      imageLight: `url("${creditPreviewImg}")`,
+      imageDark: `url("${creditPreviewImg}")`,
       pdfUrl: '/Krediidireiting_ENG.pdf',
     },
     {

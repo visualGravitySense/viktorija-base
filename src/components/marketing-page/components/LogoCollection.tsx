@@ -6,18 +6,26 @@ import { useTheme } from '@mui/system';
 import { GradientText } from '../styles/antiDesign';
 import { useTranslation } from 'react-i18next';
 
+// Import images as modules to ensure correct paths
+import creditinfoLight from '/creditinfo_ready_light.png';
+import maanteeametLight from '/maanteeamet-ready-light.png';
+import teoriaLight from '/teoria-ready-light.png';
+import creditinfoDark from '/creditinfo_ready.png';
+import maanteeametDark from '/maanteeamet-ready.png';
+import teoriaDark from '/teoria-ready.png';
+
 // Logos for light theme (light versions, light visuals on light background)
 const logosForLightTheme = [
-  '/creditinfo_ready_light.png',
-  '/maanteeamet-ready-light.png',
-  '/teoria-ready-light.png',
+  creditinfoLight,
+  maanteeametLight,
+  teoriaLight,
 ];
 
 // Logos for dark theme (regular versions, dark visuals on dark background)
 const logosForDarkTheme = [
-  '/creditinfo_ready.png',
-  '/maanteeamet-ready.png',
-  '/teoria-ready.png',
+  creditinfoDark,
+  maanteeametDark,
+  teoriaDark,
 ];
 
 const logoStyle = {

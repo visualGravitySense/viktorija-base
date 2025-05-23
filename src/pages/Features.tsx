@@ -15,6 +15,7 @@ import SEO from '../components/shared/SEO.tsx';
 import { CourseSchema } from '../components/shared/StructuredData.tsx';
 import UrgencySection from '../components/marketing-page/components/UrgencySection.tsx';
 import { useTranslation } from 'react-i18next';
+import aCatImg from '/a-cat.jpg';
 
 const FeaturesPage: React.FC<{ disableCustomTheme?: boolean; toggleColorMode?: () => void }> = (props) => {
   const { t, i18n } = useTranslation();
@@ -53,10 +54,13 @@ const FeaturesPage: React.FC<{ disableCustomTheme?: boolean; toggleColorMode?: (
       <CssBaseline enableColorScheme />
       <AppAppBar toggleColorMode={toggleColorMode} />
       <Hero 
-        translationKey="features"
+        title={t('hero.features.title')}
+        subtitle={t('hero.features.subtitle')}
+        description={t('hero.features.description')}
+        buttonText={t('hero.features.button')}
         buttonLink="/checkout?category=category-b"
-        imageUrl="/services-hero.jpg"
-        imageAlt={t('hero.features.image_alt', 'Driving School Services')}
+        imageUrl={aCatImg}
+        imageAlt={t('hero.features.image_alt')}
       />
       <div>
         {/* Driving Category B */}
