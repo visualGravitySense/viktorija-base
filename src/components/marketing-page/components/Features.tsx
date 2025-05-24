@@ -19,6 +19,8 @@ import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
 import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
 import creditPreviewImg from '/credit-preview.png';
+import highResImg from '/high-results-1.jpg';
+import carsParkImg from '/cars-park-1.jpg';
 
 interface FeatureItem {
   icon: React.ReactNode;
@@ -237,8 +239,8 @@ function getFeatureItems(t: any): FeatureItem[] {
       title: t('features.feature6'),
       description: t('features.feature6_desc'),
       note: t('features.feature6_desc'),
-      imageLight: `url("/high-results-1.jpg")`,
-      imageDark: `url("/high-results-1.jpg")`,
+      imageLight: `url("${highResImg}")`,
+      imageDark: `url("${highResImg}")`,
       pdfUrl: '',
     },
     {
@@ -246,8 +248,8 @@ function getFeatureItems(t: any): FeatureItem[] {
       title: t('features.feature2'),
       description: t('features.feature2_desc'),
       note: t('features.feature2_desc'),
-      imageLight: `url("/cars-park-1.jpg")`,
-      imageDark: `url("/cars-park-1.jpg")`,
+      imageLight: `url("${carsParkImg}")`,
+      imageDark: `url("${carsParkImg}")`,
       pdfUrl: '',
     },
   ];

@@ -17,6 +17,7 @@ import { LocalBusinessSchema, FAQSchema, CourseSchema } from '../components/shar
 import { useTranslation } from 'react-i18next';
 import aCatImg from '/a-cat.jpg';
 import bCatImg from '/b-cat.jpg';
+import fCatImg from '/final-cat-1.jpg';
 import mainHeroImg from '/main-hero-1.jpg';
 
 interface MarketingPageProps {
@@ -169,7 +170,7 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
               id: 'category-c',
               title: t('painpoints.categories.c.title'),
               description: t('painpoints.categories.c.description'),
-              imageUrl: '/final-cat-1.jpg',
+              imageUrl: fCatImg,
               price: {
                 finalLabel: t('painpoints.categories.c.final_label'),
                 finalPrice: 150
