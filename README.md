@@ -1,97 +1,130 @@
-# Marketing Website Template
+# Viktorija Autokool Website
 
-A modern, responsive marketing website template built with React, TypeScript, and Material UI.
+Modern React website for Viktorija driving school with responsive design, multiple languages support, and Stripe integration.
 
-## Overview
+## 🚀 Features
 
-This project is a starter template for creating marketing websites, based on the [Material UI Marketing Template](https://mui.com/material-ui/getting-started/templates/). It includes:
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Multi-language Support**: Russian, Estonian, English (i18next)
+- **Modern UI**: Material-UI components with custom styling
+- **Payment Integration**: Stripe for secure payments
+- **SEO Optimized**: Meta tags, structured data, sitemap
+- **Performance**: Optimized images and lazy loading
 
-- Responsive design with mobile-first approach
-- Dark and light mode support
-- Modern UI components from Material UI
-- TypeScript for type safety
-- Vite for fast development and building
+## 🛠️ Technologies
 
-## Features
+- **Frontend**: React 19, TypeScript, Material-UI
+- **Build Tool**: Vite
+- **Routing**: React Router DOM
+- **Internationalization**: i18next
+- **Payment**: Stripe
+- **Deployment**: GitHub Pages
 
-- 🎨 Customizable theme with light/dark mode
-- 📱 Fully responsive layout
-- ⚡ Fast development with Vite
-- 🔒 Type-safe with TypeScript
-- 🎯 SEO-friendly structure
-- 🎭 Modern UI components
-- 📦 Easy to customize and extend
+## 📦 Installation
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or later)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
 ```bash
-git clone [your-repo-url]
-```
+# Clone the repository
+git clone https://github.com/dmitrym87/viktorija-base.git
+cd viktorija-base
 
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-# or
-yarn
-```
 
-3. Create a `.env` file in the root directory:
-```env
-VITE_TEMPLATE_IMAGE_URL=https://mui.com
-```
-
-4. Start the development server:
-```bash
+# Start development server
 npm run dev
-# or
-yarn dev
 ```
 
-The application will be available at `http://localhost:5173`
+## 🚀 Deployment
 
-## Project Structure
+### Automatic Deployment (GitHub Actions)
+
+The website automatically deploys to GitHub Pages when you push to main/master branch:
+
+1. Push your changes to main/master branch
+2. GitHub Actions will automatically build and deploy
+3. Visit: https://dmitrym87.github.io/viktorija-base
+
+### Manual Deployment
+
+```bash
+# Build and deploy manually
+npm run deploy
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create `.env.local` file:
+
+```env
+VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+```
+
+### Base URL Configuration
+
+- **Development**: Routes work as `localhost:5173/`
+- **Production**: Routes work as `yoursite.com/viktorija-base/`
+
+The base URL is automatically configured based on `NODE_ENV`.
+
+## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── marketing-page/     # Marketing page components
-│   └── shared-theme/       # Theme customization
-├── pages/                  # Page components
-└── App.tsx                 # Main application component
+│   ├── marketing-page/     # Main website components
+│   ├── checkout/          # Checkout flow
+│   └── shared/            # Shared components
+├── pages/                 # Route pages
+├── i18n/                  # Translations
+└── hooks/                 # Custom hooks
 ```
 
-## Customization
+## 🌐 Pages
 
-### Theme
+- `/` - Home page with categories
+- `/features` - Services page
+- `/about` - About us page
+- `/checkout` - Registration/checkout page
 
-The theme can be customized in `src/components/shared-theme/`:
-- `themePrimitives.ts` - Base theme configuration
-- `AppTheme.tsx` - Theme provider component
+## 🎨 Categories
 
-### Images
+- **Category A**: Motorcycle driving course
+- **Category B**: Car driving course (manual/automatic)
+- **Category C**: Final/advanced course
 
-Update the `VITE_TEMPLATE_IMAGE_URL` in `.env` to use your own image URLs.
+## 📱 Responsive Design
 
-## Built With
+- **Mobile**: Single column layout
+- **Tablet**: Two column grid
+- **Desktop**: Three column grid
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Material UI](https://mui.com/)
-- [Vite](https://vitejs.dev/)
+## 🔧 Development
 
-## License
+```bash
+# Start development server
+npm run dev
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+# Type checking
+npx tsc --noEmit
 
-## Acknowledgments
+# Linting
+npm run lint
 
-- Based on the [Material UI Marketing Template](https://mui.com/material-ui/getting-started/templates/)
-- Uses Material UI components and styling system
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📄 License
+
+This project is proprietary and confidential.
+
+## 📞 Contact
+
+- **Phone**: +372 53464508
+- **Email**: viktorijaautokool@hot.ee
+- **Facebook**: [Viktorija Autokool](https://facebook.com/viktorijaautokool) 

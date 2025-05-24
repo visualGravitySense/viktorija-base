@@ -20,6 +20,7 @@ import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown.tsx'
 import LanguageSwitcher from '../../shared-theme/LanguageSwitcher.tsx';
 import Sitemark from './SitemarkIcon.tsx';
 import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -118,8 +119,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                 variant="text"
                 color="primary"
                 size="small"
-                component={Link}
-                href="/"
+                component={RouterLink}
+                to="/"
                 sx={{ 
                   textDecoration: 'none',
                   '&:hover': { 
@@ -136,8 +137,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                 variant="text"
                 color="primary"
                 size="small"
-                component={Link}
-                href="/features"
+                component={RouterLink}
+                to="/features"
                 sx={{ 
                   textDecoration: 'none',
                   '&:hover': { 
@@ -154,8 +155,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                 variant="text"
                 color="primary"
                 size="small"
-                component={Link}
-                href="/about"
+                component={RouterLink}
+                to="/about"
                 sx={{ 
                   textDecoration: 'none',
                   '&:hover': { 
@@ -255,8 +256,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
               color="primary" 
               variant="text" 
               size="small"
-              component={Link}
-              href="/checkout?category=category-c"
+              component={RouterLink}
+              to="/checkout?category=category-c"
             >
               {t('navigation.signin')}
             </Button>
@@ -264,8 +265,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
               color="primary" 
               variant="contained" 
               size="small"
-              component={Link}
-              href="/checkout?category=category-b"
+              component={RouterLink}
+              to="/checkout?category=category-b"
             >
               {t('navigation.signup')}
             </Button>
@@ -340,8 +341,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                 </Box>
 
                 <MenuItem 
-                  component={Link} 
-                  href="/" 
+                  component={RouterLink} 
+                  to="/" 
                   onClick={toggleDrawer(false)} 
                   sx={{ 
                     textDecoration: 'none',
@@ -356,8 +357,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                   {t('navigation.home')}
                 </MenuItem>
                 <MenuItem 
-                  component={Link} 
-                  href="/features" 
+                  component={RouterLink} 
+                  to="/features" 
                   onClick={toggleDrawer(false)} 
                   sx={{ 
                     textDecoration: 'none',
@@ -372,8 +373,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                   {t('navigation.services')}
                 </MenuItem>
                 <MenuItem 
-                  component={Link} 
-                  href="/about" 
+                  component={RouterLink} 
+                  to="/about" 
                   onClick={toggleDrawer(false)} 
                   sx={{ 
                     textDecoration: 'none',
@@ -460,8 +461,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                     variant="outlined" 
                     fullWidth
                     size="medium"
-                    component={Link}
-                    href="/checkout?category=category-c"
+                    component={RouterLink}
+                    to="/checkout?category=category-c"
                   >
                     {t('navigation.signin')}
                   </Button>
@@ -470,8 +471,8 @@ export default function AppAppBar({ toggleColorMode }: AppAppBarProps) {
                     variant="contained" 
                     fullWidth
                     size="medium"
-                    component={Link}
-                    href="/checkout?category=category-b"
+                    component={RouterLink}
+                    to="/checkout?category=category-b"
                   >
                     {t('navigation.signup')}
                   </Button>

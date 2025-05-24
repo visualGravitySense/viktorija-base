@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dmitrym87.github.io/viktorija-base",
+  "homepage": "https://visualgravitysense.github.io/viktorija-base",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

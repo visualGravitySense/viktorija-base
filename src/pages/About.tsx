@@ -22,6 +22,7 @@ import Instructors from '../components/marketing-page/components/Instructors.tsx
 import SEO from '../components/shared/SEO.tsx';
 import { LocalBusinessSchema } from '../components/shared/StructuredData.tsx';
 import { useTranslation } from 'react-i18next';
+import ourMissionImg from '/our-mission.jpg';
 
 
 export default function MarketingPage(props: { disableCustomTheme?: boolean, toggleColorMode?: () => void }) {
@@ -33,7 +34,7 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean, tog
       <SEO 
         title={t('hero.about.title')}
         description={t('hero.about.description')}
-        ogImage="/our-mission.jpg"
+        ogImage={ourMissionImg}
         ogUrl="https://viktorijaautokool.ee/about"
         language={i18n.language}
       />
@@ -64,7 +65,7 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean, tog
           "Friday 09:00-17:00",
           "Saturday 10:00-14:00",
         ]}
-        image="/our-mission.jpg"
+        image={ourMissionImg}
       />
       
       <CssBaseline enableColorScheme />
@@ -72,8 +73,11 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean, tog
       <AppAppBar toggleColorMode={toggleColorMode} />
       <Hero 
         translationKey="about"
+        title={t('hero.about.title')}
+        description={t('hero.about.description')}
+        buttonText={t('hero.about.button')}
         buttonLink="/checkout?category=category-b"
-        imageUrl="/our-mission.jpg"
+        imageUrl={ourMissionImg}
         imageAlt="Educational Platform"
       />
       <div>
