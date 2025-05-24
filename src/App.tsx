@@ -11,7 +11,7 @@ interface AppProps {
 }
 
 function App({ toggleColorMode }: AppProps) {
-  const basename = process.env.NODE_ENV === 'production' ? '/viktorija-base' : '';
+  const basename = import.meta.env.PROD ? '/viktorija-base' : '';
   
   return (
     <Box sx={{ 
