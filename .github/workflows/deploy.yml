@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, beta-launch ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, beta-launch ]
 
 jobs:
   build-and-deploy:
@@ -41,5 +41,5 @@ jobs:
 
     - name: Deploy to GitHub Pages
       id: deployment
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta-launch'
       uses: actions/deploy-pages@v4 
