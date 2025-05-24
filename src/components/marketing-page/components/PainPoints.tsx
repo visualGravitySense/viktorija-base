@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   AntiDesignTypography,
   FloatingIcon,
@@ -265,15 +265,18 @@ export default function PainPoints({
                       <Box component="div" sx={{ fontStyle: 'italic', mt: 1, fontSize: '0.875rem' }}>{item.afterPrice}</Box>
                     )}
                   </Box>
-                  <StyledButton 
-                    variant="contained" 
-                    size="large" 
-                    component={RouterLink as any}
+                  <Link 
                     to={item.buttonLink ? `${item.buttonLink}?category=${item.id}` : '#'}
-                    sx={{ mt: 'auto', fontSize: '1.1rem', py: 1.5, px: 3 }}
+                    style={{ textDecoration: 'none', width: '100%' }}
                   >
-                    {item.buttonText}
-                  </StyledButton>
+                    <StyledButton 
+                      variant="contained" 
+                      size="large" 
+                      sx={{ mt: 'auto', fontSize: '1.1rem', py: 1.5, px: 3, width: '100%' }}
+                    >
+                      {item.buttonText}
+                    </StyledButton>
+                  </Link>
                 </ComparisonCard>
               ))
             )}

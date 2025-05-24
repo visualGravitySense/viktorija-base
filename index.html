@@ -16,6 +16,20 @@
     <meta name="twitter:description" content="Автошкола Viktorija: профессиональное обучение вождению, категории A, B, курсы первой помощи, доступные цены, опытные инструкторы." />
     <meta name="twitter:image" content="/logo.png" />
     <title>Viktorija Autokool Nõmme - Профессиональное обучение вождению в Эстонии</title>
+    
+    <!-- GitHub Pages SPA routing script -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>
