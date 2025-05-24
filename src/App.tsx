@@ -11,12 +11,14 @@ interface AppProps {
 }
 
 function App({ toggleColorMode }: AppProps) {
+  const basename = process.env.NODE_ENV === 'production' ? '/viktorija-base' : '';
+  
   return (
     <Box sx={{ 
       minHeight: '100vh',
       width: '100%',
     }}>
-      <Router basename="/viktorija-base">
+      <Router basename={basename}>
         <Routes>
           <Route path="/" element={<MarketingPage toggleColorMode={toggleColorMode} />} />
           <Route path="/features" element={<Features toggleColorMode={toggleColorMode} />} />

@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import {
-  AntiDesignBox,
   AntiDesignTypography,
   FloatingIcon,
   GradientText,
@@ -59,26 +58,6 @@ const ComparisonCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-const ListItem = styled('li')(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-  position: 'relative',
-  paddingLeft: theme.spacing(3),
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    left: 0,
-    top: '50%',
-    transform: 'translateY(-50%)',
-    width: '8px',
-    height: '8px',
-    borderRadius: '50%',
-    background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-  },
-  ...theme.applyStyles('dark', {
-    color: theme.palette.grey[100],
-  }),
-}));
-
 const StyledButton = styled(Button)(({ theme }) => ({
   position: 'relative',
   padding: '12px 24px',
@@ -103,23 +82,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
     background: 'url("/pattern.png")',
     opacity: 0.1,
     borderRadius: '8px',
-  },
-}));
-
-const OutlinedButton = styled(Button)(({ theme }) => ({
-  position: 'relative',
-  padding: '12px 24px',
-  background: 'transparent',
-  border: '2px solid',
-  borderColor: theme.palette.primary.main,
-  color: theme.palette.primary.main,
-  borderRadius: '8px',
-  fontWeight: 600,
-  textTransform: 'none',
-  transition: 'all 0.3s ease',
-  '&:hover': {
-    background: 'rgba(255,255,255,0.1)',
-    transform: 'translateY(-2px)',
   },
 }));
 
@@ -231,13 +193,15 @@ export default function PainPoints({
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
-                sm: '1fr 1fr',
-                md: '1fr 1fr 1fr'
+                sm: 'repeat(2, 1fr)',
+                md: 'repeat(3, 1fr)'
               },
-              gap: 2,
+              gap: 3,
               width: '100%',
               justifyItems: 'center',
-              alignItems: 'stretch',
+              alignItems: 'start',
+              maxWidth: '1200px',
+              mx: 'auto'
             }}
           >
             {displayItems.length === 0 ? (
@@ -249,9 +213,10 @@ export default function PainPoints({
                 <ComparisonCard 
                   key={item.id}
                   sx={{ 
-                    flex: 1, 
-                    minWidth: 0, 
-                    p: { xs: 2, md: 2 }, 
+                    width: '100%',
+                    maxWidth: '400px',
+                    minHeight: '500px',
+                    p: { xs: 2, md: 3 }, 
                     display: 'flex', 
                     flexDirection: 'column', 
                     justifyContent: 'space-between' 
@@ -277,33 +242,33 @@ export default function PainPoints({
                   <Typography variant="body1" sx={{ mb: 2, color: 'text.secondary' }}>
                     {item.description}
                   </Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 600, mb: 2 }}>
+                  <Box sx={{ fontWeight: 600, mb: 2 }}>
                     {item.price.finalLabel && item.price.finalPrice !== undefined ? (
-                      <>
-                        <span style={{ fontWeight: 400 }}>{item.price.finalLabel}</span> {item.price.finalPrice} {t('painpoints.euro')}<br/>
-                      </>
+                      <Box component="div">
+                        <Box component="span" sx={{ fontWeight: 400 }}>{item.price.finalLabel}</Box> {item.price.finalPrice} {t('painpoints.euro')}<br/>
+                      </Box>
                     ) : (
-                      <>
-                        {item.price.theory !== undefined && <><span style={{ fontWeight: 400 }}>{t('painpoints.theory')}: </span> {item.price.theory} {t('painpoints.euro')}<br/></>}
-                        {item.price.lesson !== undefined && <><span style={{ fontWeight: 400 }}>{t('painpoints.lesson')}: </span> {item.price.lesson} {t('painpoints.euro')}<br/></>}
+                      <Box component="div">
+                        {item.price.theory !== undefined && <Box component="div"><Box component="span" sx={{ fontWeight: 400 }}>{t('painpoints.theory')}: </Box> {item.price.theory} {t('painpoints.euro')}</Box>}
+                        {item.price.lesson !== undefined && <Box component="div"><Box component="span" sx={{ fontWeight: 400 }}>{t('painpoints.lesson')}: </Box> {item.price.lesson} {t('painpoints.euro')}</Box>}
                         {item.price.manualTotalLabel ? (
-                          <><span style={{ fontWeight: 400 }}>{item.price.manualTotalLabel}</span> {item.price.total} {t('painpoints.euro')}<br/></>
+                          <Box component="div"><Box component="span" sx={{ fontWeight: 400 }}>{item.price.manualTotalLabel}</Box> {item.price.total} {t('painpoints.euro')}</Box>
                         ) : (
-                          item.price.total !== undefined && <><span style={{ fontWeight: 400 }}>{t('painpoints.total')}:</span> {item.price.total} {t('painpoints.euro')}<br/></>
+                          item.price.total !== undefined && <Box component="div"><Box component="span" sx={{ fontWeight: 400 }}>{t('painpoints.total')}:</Box> {item.price.total} {t('painpoints.euro')}</Box>
                         )}
                         {item.price.autoTotalLabel && item.price.autoTotal !== undefined && (
-                          <><span style={{ fontWeight: 400 }}>{item.price.autoTotalLabel}</span> {item.price.autoTotal} {t('painpoints.euro')}<br/></>
+                          <Box component="div"><Box component="span" sx={{ fontWeight: 400 }}>{item.price.autoTotalLabel}</Box> {item.price.autoTotal} {t('painpoints.euro')}</Box>
                         )}
-                      </>
+                      </Box>
                     )}
                     {item.afterPrice && (
-                      <Typography variant="body2" sx={{ fontStyle: 'italic', mt: 1 }}>{item.afterPrice}</Typography>
+                      <Box component="div" sx={{ fontStyle: 'italic', mt: 1, fontSize: '0.875rem' }}>{item.afterPrice}</Box>
                     )}
-                  </Typography>
+                  </Box>
                   <StyledButton 
                     variant="contained" 
                     size="large" 
-                    component={RouterLink}
+                    component={RouterLink as any}
                     to={item.buttonLink ? `${item.buttonLink}?category=${item.id}` : '#'}
                     sx={{ mt: 'auto', fontSize: '1.1rem', py: 1.5, px: 3 }}
                   >

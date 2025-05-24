@@ -46,10 +46,10 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean, tog
         telephone="+37253464508"
         email="viktorijaautokool@hot.ee"
         address={{
-          streetAddress: "Õie 14",
+          streetAddress: "Jaama 1a (2 korrus)",
           addressLocality: "Tallinn",
           addressRegion: "Harjumaa",
-          postalCode: "12616",
+          postalCode: "11615",
           addressCountry: "Estonia"
         }}
         geo={{
