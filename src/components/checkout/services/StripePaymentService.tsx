@@ -37,7 +37,7 @@ const CARD_ELEMENT_OPTIONS: CardElementProps['options'] = {
   hidePostalCode: true,
 };
 
-export const CardForm: React.FC<{ onSuccess: (paymentMethod: any) => void }> = ({ onSuccess }) => {
+export const CardForm: React.FC<{ onSuccess: (paymentMethod: unknown) => void }> = ({ onSuccess }) => {
   const { t } = useTranslation();
   const stripe = useStripe();
   const elements = useElements();
@@ -136,9 +136,9 @@ export const StripePaymentProvider: React.FC<{ children: React.ReactNode }> = ({
 export const usePaymentProcessor = () => {
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
   const [paymentError, setPaymentError] = useState<string | null>(null);
-  const [paymentData, setPaymentData] = useState<any>(null);
+  const [paymentData, setPaymentData] = useState<Record<string, unknown> | null>(null);
 
-  const processPayment = async (amount: number, currency: string = 'eur', paymentMethod: any) => {
+  const processPayment = async (amount: number, currency: string = 'eur', paymentMethod: unknown) => {
     setPaymentStatus('processing');
     
     try {

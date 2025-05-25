@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 interface InspectletProps {
   siteId: string;
@@ -8,7 +7,7 @@ interface InspectletProps {
 
 declare global {
   interface Window {
-    __insp: any[];
+    __insp: unknown[];
     __inspld: number;
   }
 }
@@ -48,13 +47,13 @@ export default function Inspectlet({ siteId, enabled = true }: InspectletProps) 
 }
 
 // Utility functions for Inspectlet tracking
-export const inspectletTrack = (eventName: string, properties?: Record<string, any>) => {
+export const inspectletTrack = (eventName: string, properties?: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && window.__insp) {
     window.__insp.push(['track', eventName, properties]);
   }
 };
 
-export const inspectletIdentify = (userId: string, traits?: Record<string, any>) => {
+export const inspectletIdentify = (userId: string, traits?: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && window.__insp) {
     window.__insp.push(['identify', userId, traits]);
   }

@@ -1,4 +1,4 @@
-import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { ThemeOptions } from '@mui/material/styles';
 
 // Define a unified color palette for the entire application
 const colors = {
@@ -60,15 +60,7 @@ const colors = {
   },
 };
 
-// Define consistent spacing and sizing
-const spacing = {
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 48,
-};
+
 
 // Define consistent typography
 const typography = {

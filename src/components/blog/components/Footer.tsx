@@ -93,7 +93,7 @@ export default function Footer() {
           severity: 'error'
         });
       }
-    } catch (error) {
+    } catch {
       setSnackbar({
         open: true,
         message: 'Произошла ошибка при подписке. Попробуйте еще раз.',

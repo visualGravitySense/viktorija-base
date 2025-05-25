@@ -10,14 +10,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import RadioGroup from '@mui/material/RadioGroup';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
 import SimCardRoundedIcon from '@mui/icons-material/SimCardRounded';
@@ -97,8 +94,6 @@ type PaymentType = 'creditCard' | 'bankTransfer' | 'stripeCard';
 
 export default function PaymentForm() {
   const { t } = useTranslation();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   const [paymentType, setPaymentType] = React.useState<PaymentType>('stripeCard');
   const [cardNumber, setCardNumber] = React.useState('');
@@ -107,9 +102,6 @@ export default function PaymentForm() {
   const [savePaymentMethod, setSavePaymentMethod] = React.useState(false);
   
   const { 
-    paymentStatus, 
-    paymentError, 
-    paymentData: processorPaymentData, 
     processPayment, 
     resetPayment 
   } = usePaymentProcessor();

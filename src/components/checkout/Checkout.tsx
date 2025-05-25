@@ -36,8 +36,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 // Create a context to share payment state across components
 const CheckoutContext = React.createContext<{
-  paymentData: any;
-  setPaymentData: (data: any) => void;
+  paymentData: Record<string, unknown> | null;
+  setPaymentData: (data: Record<string, unknown> | null) => void;
   paymentSuccess: boolean;
   setPaymentSuccess: (success: boolean) => void;
 }>({
@@ -61,12 +61,12 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
   
   const [activeStep, setActiveStep] = React.useState(0);
   const [transmissionType, setTransmissionType] = React.useState('manual'); // Default to manual
-  const [paymentData, setPaymentData] = React.useState<any>(null);
+  const [paymentData, setPaymentData] = React.useState<Record<string, unknown> | null>(null);
   const [paymentSuccess, setPaymentSuccess] = React.useState(false);
   
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     setActiveStep(activeStep + 1);
-  };
+  }, [activeStep]);
   
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -112,7 +112,7 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
       
       return () => clearTimeout(timer);
     }
-  }, [paymentSuccess, activeStep]);
+  }, [paymentSuccess, activeStep, handleNext]);
   
   function getStepContent(step: number) {
     switch (step) {

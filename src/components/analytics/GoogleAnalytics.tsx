@@ -8,8 +8,8 @@ interface GoogleAnalyticsProps {
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
   }
 }
 
@@ -21,7 +21,7 @@ export default function GoogleAnalytics({ measurementId, enabled = true }: Googl
     window.dataLayer = window.dataLayer || [];
     
     // Define gtag function
-    window.gtag = function gtag(...args: any[]) {
+    window.gtag = function gtag(...args: unknown[]) {
       window.dataLayer.push(args);
     };
 
@@ -65,7 +65,7 @@ export default function GoogleAnalytics({ measurementId, enabled = true }: Googl
 }
 
 // Utility functions for tracking events
-export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+export const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, parameters);
   }
