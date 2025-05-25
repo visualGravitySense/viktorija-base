@@ -1,21 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { compression } from 'vite-plugin-compression'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, mode }) => ({
   plugins: [
     react(),
-    compression({
+    viteCompression({
       algorithm: 'gzip',
       ext: '.gz',
     }),
-    compression({
+    viteCompression({
       algorithm: 'brotliCompress',
       ext: '.br',
     }),
   ],
-  base: command === 'build' ? '/viktorija-base/' : '/',
+  base: (command === 'build' && mode === 'production') ? '/viktorija-base/' : '/',
   build: {
     assetsDir: 'assets',
     minify: 'terser',

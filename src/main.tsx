@@ -1,8 +1,9 @@
-import { StrictMode, useState, useMemo } from 'react'
+import { StrictMode, useState, useMemo, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { HelmetProvider } from 'react-helmet-async'
 import { getDesignTokens } from './theme'
+import { registerServiceWorker } from './utils/serviceWorker'
 import './index.css'
 import App from './App.tsx'
 import './i18n/i18n'
@@ -15,6 +16,11 @@ const ThemeApp = () => {
   const toggleColorMode = () => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
+
+  // Register Service Worker for caching
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
   
   return (
     <HelmetProvider>
