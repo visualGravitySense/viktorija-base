@@ -83,10 +83,7 @@ export default function LogoCollection() {
         {logos.map((logo, index) => (
           <Grid 
             key={index}
-            item
-            xs={4}
-            sm={4}
-            md={4}
+            size={{ xs: 4, sm: 4, md: 4 }}
             sx={{
               display: 'flex',
               justifyContent: 'center',

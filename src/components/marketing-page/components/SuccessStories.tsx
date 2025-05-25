@@ -65,7 +65,7 @@ export default function SuccessStories({
 
       <Grid container spacing={4} sx={{ mb: 8 }}>
         {caseStudies.map((study, index) => (
-          <Grid item xs={12} md={4} key={index}>
+          <Grid size={{ xs: 12, md: 4 }} key={index}>
             <StyledCard>
               <CardContent sx={{ p: 3 }}>
                 <Typography variant="h6" gutterBottom>
@@ -82,7 +82,7 @@ export default function SuccessStories({
 
       <Grid container spacing={4} sx={{ mb: 8 }}>
         {metrics.map((metric, index) => (
-          <Grid item xs={12} md={4} key={index}>
+          <Grid size={{ xs: 12, md: 4 }} key={index}>
             <MetricCard>
               <Typography variant="h3" color="primary" gutterBottom>
                 {metric.value}

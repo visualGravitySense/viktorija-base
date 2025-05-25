@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Generator - VA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .favicon-preview {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: center;
+        }
+        .favicon-size {
+            text-align: center;
+        }
+        .favicon-canvas {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+        button {
+            background: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1e3f73;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Favicon Generator - "VA" for Viktorija Driving School</h1>
+        
+        <div class="favicon-preview">
+            <div class="favicon-size">
+                <h3>16x16</h3>
+                <canvas id="favicon16" class="favicon-canvas" width="16" height="16"></canvas>
+                <button onclick="downloadFavicon(16)">Download 16x16</button>
+            </div>
+            <div class="favicon-size">
+                <h3>32x32</h3>
+                <canvas id="favicon32" class="favicon-canvas" width="32" height="32"></canvas>
+                <button onclick="downloadFavicon(32)">Download 32x32</button>
+            </div>
+            <div class="favicon-size">
+                <h3>64x64</h3>
+                <canvas id="favicon64" class="favicon-canvas" width="64" height="64"></canvas>
+                <button onclick="downloadFavicon(64)">Download 64x64</button>
+            </div>
+        </div>
+
+        <button onclick="generateICO()">Generate favicon.ico</button>
+        
+        <h3>Current SVG Favicon:</h3>
+        <div style="padding: 20px; background: #f8f9fa; border-radius: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                <rect width="64" height="64" fill="#2c5aa0" rx="8"/>
+                <text x="32" y="42" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1px">VA</text>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function drawFavicon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Draw background with rounded corners
+            ctx.fillStyle = '#2c5aa0';
+            ctx.beginPath();
+            const radius = size * 0.125; // 8px radius for 64px, scaled proportionally
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fill();
+            
+            // Draw text "VA"
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${size * 0.375}px Arial, sans-serif`; // 24px for 64px, scaled
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.letterSpacing = `${size * 0.015625}px`; // 1px for 64px, scaled
+            
+            const x = size / 2;
+            const y = size / 2 + size * 0.03125; // Slight vertical adjustment
+            
+            ctx.fillText('VA', x, y);
+        }
+
+        function downloadFavicon(size) {
+            const canvas = document.getElementById(`favicon${size}`);
+            const link = document.createElement('a');
+            link.download = `favicon-${size}x${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        function generateICO() {
+            // This would require a more complex implementation
+            // For now, we'll just download the 32x32 version
+            alert('For ICO generation, please use the 32x32 PNG with an online converter or specialized tool.');
+            downloadFavicon(32);
+        }
+
+        // Add roundRect polyfill for older browsers
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+
+        // Initialize canvases
+        window.onload = function() {
+            drawFavicon(document.getElementById('favicon16'), 16);
+            drawFavicon(document.getElementById('favicon32'), 32);
+            drawFavicon(document.getElementById('favicon64'), 64);
+        };
+    </script>
+</body>
+</html> 

@@ -21,6 +21,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import { useTranslation } from 'react-i18next';
 import { subscribeToNewsletter } from '../../../firebase/newsletterService';
 import { TelegramIcon, WhatsAppIcon } from '../../icons';
+import { trackEvent, inspectletTrack } from '../../analytics/Analytics';
+import { eventNames } from '../../../config/analytics';
 
 function Copyright() {
   const { t } = useTranslation();
@@ -82,6 +84,16 @@ export default function Footer() {
       const result = await subscribeToNewsletter(email, 'footer', 'ru');
       
       if (result.success) {
+        // Track successful newsletter subscription
+        trackEvent(eventNames.newsletterSubscribe, {
+          source: 'footer',
+          email_domain: email.split('@')[1],
+        });
+        inspectletTrack('newsletter_subscribe', {
+          source: 'footer',
+          success: true,
+        });
+        
         setSnackbar({
           open: true,
           message: result.message,
@@ -141,7 +153,14 @@ export default function Footer() {
         <Stack direction="row" spacing={1} alignItems="center">
           <PhoneIcon fontSize="small" />
           <Typography variant="body2">
-            Телефон/Viber: <Link href="tel:+37253464508" sx={{ color: 'inherit', fontWeight: 'bold' }}>+372 53464508</Link>
+            Телефон/Viber: <Link 
+              href="tel:+37253464508" 
+              sx={{ color: 'inherit', fontWeight: 'bold' }}
+              onClick={() => {
+                trackEvent(eventNames.phoneClick, { source: 'footer' });
+                inspectletTrack('phone_click', { source: 'footer' });
+              }}
+            >+372 53464508</Link>
           </Typography>
         </Stack>
         
@@ -162,7 +181,16 @@ export default function Footer() {
         <Stack direction="row" spacing={1} alignItems="center">
           <WhatsAppIcon fontSize="small" />
           <Typography variant="body2">
-            WhatsApp: <Link href="https://wa.me/37253464508" target="_blank" rel="noopener noreferrer" sx={{ color: 'inherit', fontWeight: 'bold' }}>+372 53464508</Link>
+            WhatsApp: <Link 
+              href="https://wa.me/37253464508" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              sx={{ color: 'inherit', fontWeight: 'bold' }}
+              onClick={() => {
+                trackEvent(eventNames.whatsappClick, { source: 'footer' });
+                inspectletTrack('whatsapp_click', { source: 'footer' });
+              }}
+            >+372 53464508</Link>
           </Typography>
         </Stack>
         

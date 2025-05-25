@@ -124,7 +124,7 @@ export default function Instructors({
         
         <Grid container spacing={{ xs: 2, sm: 3, md: 5 }} justifyContent="center">
           {instructors.map((instructor) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={instructor.id} sx={{ maxWidth: { md: '33.333%' } }}>
+                          <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }} key={instructor.id} sx={{ maxWidth: { md: '33.333%' } }}>
               <InstructorCard>
                 <Box 
                   component="img" 
