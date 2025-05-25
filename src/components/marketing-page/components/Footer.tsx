@@ -18,7 +18,6 @@ import SitemarkIcon from './SitemarkIcon';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useTranslation } from 'react-i18next';
 import { subscribeToNewsletter } from '../../../firebase/newsletterService';
 import { TelegramIcon, WhatsAppIcon } from '../../icons';
