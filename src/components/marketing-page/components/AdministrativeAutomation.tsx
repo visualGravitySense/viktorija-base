@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 
 import ScheduleIcon from '@mui/icons-material/Schedule';
@@ -13,6 +14,11 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PaymentIcon from '@mui/icons-material/Payment';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+
+import { TelegramIcon, WhatsAppIcon } from '../../icons';
 
 interface Benefit {
   icon: 'schedule' | 'notifications' | 'description' | 'payment' | 'analytics';
@@ -37,6 +43,23 @@ const StyledCard = styled(Card)(({ theme }) => ({
     transform: 'translateY(-4px)',
   },
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
+}));
+
+const StyledSocialButton = styled(IconButton)(({ theme }) => ({
+  width: 60,
+  height: 60,
+  margin: theme.spacing(1),
+  borderRadius: '50%',
+  transition: 'all 0.3s ease-in-out',
+  border: `2px solid ${theme.palette.primary.main}`,
+  color: theme.palette.primary.main,
+  backgroundColor: 'transparent',
+  '&:hover': {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    transform: 'scale(1.1)',
+    boxShadow: theme.shadows[8],
+  },
 }));
 
 export default function AdministrativeAutomation({
@@ -106,6 +129,81 @@ export default function AdministrativeAutomation({
         >
           {subtitle}
         </Typography>
+        
+        {/* Social Media Section */}
+        <Box sx={{ mt: 4, mb: 4 }}>
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: 'text.primary', 
+              mb: 3, 
+              fontWeight: 600,
+              fontSize: { xs: '1.1rem', sm: '1.25rem' }
+            }}
+          >
+            Свяжитесь с нами
+          </Typography>
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: 1
+          }}>
+            <StyledSocialButton
+              href="https://www.facebook.com/viktorija.autokool"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FacebookIcon sx={{ fontSize: 32 }} />
+            </StyledSocialButton>
+            
+            <StyledSocialButton
+              href="https://wa.me/37253464508"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppIcon sx={{ fontSize: 32 }} />
+            </StyledSocialButton>
+            
+            <StyledSocialButton
+              href="tg://resolve?phone=37253464508"
+              aria-label="Telegram"
+            >
+              <TelegramIcon sx={{ fontSize: 32 }} />
+            </StyledSocialButton>
+            
+            <StyledSocialButton
+              href="tel:+37253464508"
+              aria-label="Телефон"
+            >
+              <PhoneIcon sx={{ fontSize: 32 }} />
+            </StyledSocialButton>
+            
+            <StyledSocialButton
+              href="mailto:viktorijaautokool@hot.ee"
+              aria-label="Email"
+            >
+              <EmailIcon sx={{ fontSize: 32 }} />
+            </StyledSocialButton>
+          </Box>
+          
+          {/* Contact Info Text */}
+          <Box sx={{ mt: 3 }}>
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: 'text.secondary',
+                fontSize: '0.95rem',
+                lineHeight: 1.6
+              }}
+            >
+              Телефон: +372 53464508 | Email: viktorijaautokool@hot.ee
+            </Typography>
+          </Box>
+        </Box>
       </Box>
 
       <Grid container spacing={4}>

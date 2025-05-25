@@ -19,6 +19,7 @@
     "@mui/material": "^7.0.2",
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.3.0",
+    "firebase": "^11.8.1",
     "i18next": "^25.2.0",
     "i18next-browser-languagedetector": "^8.1.0",
     "react": "^19.0.0",
