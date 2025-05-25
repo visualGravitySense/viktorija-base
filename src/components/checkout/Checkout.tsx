@@ -21,11 +21,8 @@ import Slide from '@mui/material/Slide';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import AddressForm from './components/AddressForm.tsx';
-import Info from './components/Info.tsx';
-import InfoMobile from './components/InfoMobile.tsx';
 import PaymentForm from './components/PaymentForm.tsx';
 import Review from './components/Review.tsx';
-import SitemarkIcon from './components/SitemarkIcon.tsx';
 import MobileProgress from './components/MobileProgress.tsx';
 import OrderSummaryCard from './components/OrderSummaryCard.tsx';
 import AppTheme from '../shared-theme/AppTheme';
@@ -370,198 +367,205 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
               </Box>
             </Container>
           ) : (
-            // Desktop Layout (existing)
-            <Grid
-              container
-              sx={{
-                height: 'calc(100dvh - var(--template-frame-height, 0px))',
-                mt: 0,
-              }}
-            >
-            <Grid
-              size={{ xs: 12, sm: 5, lg: 4 }}
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                flexDirection: 'column',
-                backgroundColor: 'background.paper',
-                borderRight: { sm: 'none', md: '1px solid' },
-                borderColor: { sm: 'none', md: 'divider' },
-                alignItems: 'start',
-                pt: 16,
-                px: 10,
-                gap: 4,
-              }}
-            >
-              <SitemarkIcon />
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexGrow: 1,
-                  width: '100%',
-                  maxWidth: 500,
-                }}
-              >
-                <Info 
-                  totalPrice={totalPrice} 
-                  onTransmissionChange={handleTransmissionChange}
-                  transmissionType={transmissionType}
-                  instructor={instructor}
-                />
-              </Box>
-            </Grid>
-            <Grid
-              size={{ sm: 12, md: 7, lg: 8 }}
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                maxWidth: '100%',
-                width: '100%',
-                backgroundColor: { xs: 'transparent', sm: 'background.default' },
-                alignItems: 'start',
-                pt: { xs: 0, sm: 16 },
-                px: { xs: 2, sm: 10 },
-                gap: { xs: 4, md: 8 },
-              }}
-            >
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: { sm: 'space-between', md: 'flex-end' },
-                  alignItems: 'center',
-                  width: '100%',
-                  maxWidth: { sm: '100%', md: 600 },
-                }}
-              >
-                <Box
-                  sx={{
-                    display: { xs: 'none', md: 'flex' },
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-end',
-                    flexGrow: 1,
-                  }}
-                >
-                  <Stepper
-                    id="desktop-stepper"
-                    activeStep={activeStep}
-                    sx={{ width: '100%', height: 40 }}
-                  >
-                    {steps.map((label) => (
-                      <Step
-                        sx={{ ':first-child': { pl: 0 }, ':last-child': { pr: 0 } }}
-                        key={label}
-                      >
-                        <StepLabel>{label}</StepLabel>
-                      </Step>
-                    ))}
-                  </Stepper>
-                </Box>
-              </Box>
-              <Card sx={{ display: { xs: 'flex', md: 'none' }, width: '100%' }}>
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    width: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <Typography variant="subtitle2" gutterBottom>
-                      {t('checkout.selected_products')}
-                    </Typography>
-                    <Typography variant="body1">
-                      {totalPrice}
-                    </Typography>
-                  </div>
-                  <InfoMobile 
-                    totalPrice={totalPrice} 
-                    onTransmissionChange={handleTransmissionChange}
-                    transmissionType={transmissionType}
-                    instructor={instructor}
-                  />
-                </CardContent>
-              </Card>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexGrow: 1,
-                  width: '100%',
-                  maxWidth: { sm: '100%', md: 600 },
-                  maxHeight: '720px',
-                  gap: { xs: 5, md: 'none' },
-                }}
-              >
-                <Stepper
-                  id="mobile-stepper"
-                  activeStep={activeStep}
-                  alternativeLabel
-                  sx={{ display: { sm: 'flex', md: 'none' } }}
-                >
-                  {steps.map((label) => (
-                    <Step
-                      sx={{
-                        ':first-child': { pl: 0 },
-                        ':last-child': { pr: 0 },
-                        '& .MuiStepConnector-root': { top: { xs: 6, sm: 12 } },
-                      }}
-                      key={label}
-                    >
-                      <StepLabel>{label}</StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-                <React.Fragment>
-                  {getStepContent(activeStep)}
-                  <Box
-                    sx={{
-                      mt: { xs: 8, sm: 8 },
-                      display: 'flex',
-                      justifyContent: activeStep !== 0 ? 'space-between' : 'flex-end',
-                      width: '100%',
+            // Desktop Layout (Improved)
+            <Container maxWidth="xl" sx={{ py: { xs: 2, md: 4 }, px: { xs: 2, md: 3 } }}>
+              <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+                {/* Desktop Header with Title */}
+                <Box sx={{ mb: { xs: 3, md: 4 }, textAlign: 'center' }}>
+                  <Typography 
+                    variant={{ xs: 'h5', md: 'h4' }}
+                    sx={{ 
+                      fontWeight: 700,
+                      background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      mb: 1,
                     }}
                   >
-                    {activeStep !== 0 && (
-                      <Button
-                        startIcon={<ChevronLeftRoundedIcon />}
-                        onClick={handleBack}
-                        variant="text"
-                      >
-                        {t('checkout.back')}
-                      </Button>
-                    )}
-                    {activeStep === steps.length - 1 ? (
-                      <Button
-                        variant="contained"
-                        endIcon={<ChevronRightRoundedIcon />}
-                        onClick={() => {
-                          // Handle order placement/completion here
-                          window.location.href = '/';
+                    {t('checkout.title', 'Запись на курс')}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                    {t('checkout.subtitle', 'Заполните форму для записи на обучение')}
+                  </Typography>
+                </Box>
+
+                <Grid container spacing={{ xs: 2, md: 3, lg: 4 }}>
+                  {/* Left Column - Progress & Order Summary */}
+                  <Grid size={{ xs: 12, md: 5, lg: 4 }}>
+                    <Stack spacing={{ xs: 2, md: 3 }}>
+                      {/* Desktop Progress */}
+                      <Fade in={true} timeout={600}>
+                        <Paper
+                          elevation={2}
+                          sx={{
+                            borderRadius: 4,
+                            overflow: 'hidden',
+                            border: '1px solid',
+                            borderColor: 'divider',
+                            boxShadow: '0 2px 12px rgba(0, 0, 0, 0.06)',
+                            transition: 'all 0.3s ease-in-out',
+                            '&:hover': {
+                              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                              transform: 'translateY(-1px)',
+                            },
+                          }}
+                        >
+                          <MobileProgress activeStep={activeStep} steps={steps} />
+                        </Paper>
+                      </Fade>
+
+                      {/* Desktop Order Summary */}
+                      <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={400}>
+                        <Box>
+                          <OrderSummaryCard
+                            totalPrice={totalPrice}
+                            category={category}
+                            transmissionType={transmissionType}
+                            instructor={instructor}
+                            onTransmissionChange={handleTransmissionChange}
+                          />
+                        </Box>
+                      </Slide>
+                    </Stack>
+                  </Grid>
+
+                  {/* Right Column - Form Content */}
+                  <Grid size={{ xs: 12, md: 7, lg: 8 }}>
+                    <Stack spacing={{ xs: 2, md: 3 }}>
+                      {/* Form Content */}
+                      <Fade in={true} timeout={600} key={activeStep}>
+                        <Paper
+                          elevation={2}
+                          sx={{
+                            p: { xs: 3, md: 4 },
+                            borderRadius: 4,
+                            bgcolor: 'background.paper',
+                            border: '1px solid',
+                            borderColor: 'divider',
+                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                            transition: 'all 0.3s ease-in-out',
+                            '&:hover': {
+                              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
+                              transform: 'translateY(-2px)',
+                            },
+                          }}
+                        >
+                          {getStepContent(activeStep)}
+                        </Paper>
+                      </Fade>
+
+                      {/* Desktop Navigation */}
+                      <Paper
+                        elevation={3}
+                        sx={{
+                          p: { xs: 2, md: 3 },
+                          borderRadius: 4,
+                          bgcolor: 'background.paper',
+                          border: '1px solid',
+                          borderColor: 'divider',
+                          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
                         }}
-                        sx={{ ml: 'auto' }}
                       >
-                        {t('checkout.place_order')}
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="contained"
-                        endIcon={<ChevronRightRoundedIcon />}
-                        onClick={handleNext}
-                        sx={{ ml: 'auto' }}
-                        disabled={activeStep === 1 && !paymentSuccess}
-                      >
-                        {activeStep === steps.length - 2
-                          ? t('checkout.proceed_to_review')
-                          : t('checkout.next')}
-                      </Button>
-                    )}
-                  </Box>
-                </React.Fragment>
+                        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 3 }} justifyContent="space-between" alignItems="center">
+                          {activeStep !== 0 ? (
+                            <Fade in={activeStep !== 0}>
+                                                              <Button
+                                  startIcon={<ChevronLeftRoundedIcon />}
+                                  onClick={handleBack}
+                                  variant="outlined"
+                                  size="large"
+                                  fullWidth={{ xs: true, sm: false }}
+                                  sx={{ 
+                                    borderRadius: 3,
+                                    py: 1.5,
+                                    px: { xs: 3, sm: 4 },
+                                    fontWeight: 600,
+                                    borderWidth: 2,
+                                    minWidth: { sm: '140px' },
+                                    '&:hover': {
+                                      borderWidth: 2,
+                                      transform: 'translateY(-1px)',
+                                      boxShadow: 2,
+                                    },
+                                    transition: 'all 0.2s ease-in-out',
+                                  }}
+                                >
+                                {t('checkout.back', 'Назад')}
+                              </Button>
+                            </Fade>
+                          ) : (
+                            <Box /> // Empty box to maintain spacing
+                          )}
+                          
+                          {activeStep === steps.length - 1 ? (
+                            <Button
+                              variant="contained"
+                              endIcon={<ChevronRightRoundedIcon />}
+                              onClick={() => {
+                                window.location.href = '/';
+                              }}
+                              size="large"
+                              fullWidth={{ xs: true, sm: false }}
+                              sx={{ 
+                                borderRadius: 3,
+                                py: 1.5,
+                                px: { xs: 3, sm: 4 },
+                                fontWeight: 600,
+                                fontSize: { xs: '1rem', sm: '1.1rem' },
+                                minWidth: { sm: '180px' },
+                                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                                boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+                                '&:hover': {
+                                  transform: 'translateY(-2px)',
+                                  boxShadow: '0 6px 10px 2px rgba(33, 203, 243, .3)',
+                                },
+                                transition: 'all 0.3s ease-in-out',
+                              }}
+                            >
+                              {t('checkout.place_order', 'Оформить заказ')}
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="contained"
+                              endIcon={<ChevronRightRoundedIcon />}
+                              onClick={handleNext}
+                              disabled={activeStep === 1 && !paymentSuccess}
+                              size="large"
+                              fullWidth={{ xs: true, sm: false }}
+                              sx={{ 
+                                borderRadius: 3,
+                                py: 1.5,
+                                px: { xs: 3, sm: 4 },
+                                fontWeight: 600,
+                                fontSize: { xs: '1rem', sm: '1.1rem' },
+                                minWidth: { sm: '180px' },
+                                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                                boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+                                '&:hover': {
+                                  transform: 'translateY(-2px)',
+                                  boxShadow: '0 6px 10px 2px rgba(33, 203, 243, .3)',
+                                },
+                                '&:disabled': {
+                                  background: 'grey.300',
+                                  boxShadow: 'none',
+                                  transform: 'none',
+                                },
+                                transition: 'all 0.3s ease-in-out',
+                              }}
+                            >
+                              {activeStep === steps.length - 2
+                                ? t('checkout.proceed_to_review', 'К проверке')
+                                : t('checkout.next', 'Далее')}
+                            </Button>
+                          )}
+                        </Stack>
+                      </Paper>
+                    </Stack>
+                  </Grid>
+                </Grid>
               </Box>
-            </Grid>
-          </Grid>
+            </Container>
           )}
         </StripePaymentProvider>
       </CheckoutContext.Provider>
