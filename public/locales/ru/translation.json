@@ -62,5 +62,51 @@
     "previous": "Назад",
     "next": "Далее",
     "place_order": "Разместить заказ",
-    "view_details": "Просмотреть детали"
+    "view_details": "Просмотреть детали",
+    "title": "Запись на курс",
+    "back": "Назад",
+    "proceed_to_review": "К проверке",
+    "total_amount": "Общая стоимость",
+    "course_details": "Детали курса",
+    "instructor": "Инструктор",
+    "transmission": {
+      "manual": "Механическая",
+      "automatic": "Автоматическая"
+    },
+    "progress": {
+      "title": "Прогресс оформления",
+      "completed": "завершено",
+      "done": "Готово"
+    },
+    "address": {
+      "title": "Контактная информация",
+      "first_name": "Имя",
+      "first_name_placeholder": "Введите ваше имя",
+      "last_name": "Фамилия",
+      "last_name_placeholder": "Введите вашу фамилию",
+      "email": "Email",
+      "email_placeholder": "example@email.com",
+      "phone": "Телефон",
+      "phone_placeholder": "+372 XXXX XXXX",
+      "address_line1": "Адрес",
+      "address_line1_placeholder": "Улица, дом, квартира",
+      "city": "Город",
+      "city_placeholder": "Таллин",
+      "zip": "Почтовый индекс",
+      "zip_placeholder": "10001",
+      "country": "Страна",
+      "country_placeholder": "Эстония",
+      "save_info": "Сохранить информацию для будущих заказов"
+    },
+    "payment": {
+      "title": "Способ оплаты",
+      "secure_payment": "Безопасная оплата с SSL шифрованием",
+      "secure_card": "Банковская карта",
+      "card_description": "Visa, Mastercard, American Express",
+      "recommended": "Рекомендуется",
+      "card": "Кредитная карта",
+      "manual_entry": "Ручной ввод данных карты",
+      "bank_account": "Банковский перевод",
+      "bank_description": "Перевод на банковский счет"
+    }
   } 

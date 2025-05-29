@@ -40,6 +40,9 @@ export default function PhotoGallery({ title = 'Галерея', images }: Photo
                 component="img"
                 src={img.src}
                 alt={img.alt}
+                loading="lazy"
+                width="360"
+                height="240"
                 sx={{
                   width: '100%',
                   maxWidth: 360,

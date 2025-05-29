@@ -10,14 +10,17 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import RadioGroup from '@mui/material/RadioGroup';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import Chip from '@mui/material/Chip';
 import { styled } from '@mui/material/styles';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
 import SimCardRoundedIcon from '@mui/icons-material/SimCardRounded';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import SecurityIcon from '@mui/icons-material/Security';
 import { useTranslation } from 'react-i18next';
 import { StripePaymentProvider, CardForm, usePaymentProcessor } from '../services/StripePaymentService';
 import { useCheckoutContext } from '../Checkout.tsx';
@@ -91,6 +94,7 @@ type PaymentType = 'creditCard' | 'bankTransfer' | 'stripeCard';
 
 export default function PaymentForm() {
   const { t } = useTranslation();
+  
   const [paymentType, setPaymentType] = React.useState<PaymentType>('stripeCard');
   const [cardNumber, setCardNumber] = React.useState('');
   const [cvv, setCvv] = React.useState('');
@@ -98,9 +102,6 @@ export default function PaymentForm() {
   const [savePaymentMethod, setSavePaymentMethod] = React.useState(false);
   
   const { 
-    paymentStatus, 
-    paymentError, 
-    paymentData: processorPaymentData, 
     processPayment, 
     resetPayment 
   } = usePaymentProcessor();
@@ -152,112 +153,184 @@ export default function PaymentForm() {
   };
 
   return (
-    <Stack spacing={{ xs: 3, sm: 6 }} useFlexGap>
-      <FormControl component="fieldset" fullWidth>
-        <RadioGroup
-          aria-label="Payment options"
-          name="paymentType"
-          value={paymentType}
-          onChange={handlePaymentTypeChange}
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            gap: 2,
-          }}
-        >
-          <Card selected={paymentType === 'stripeCard'}>
-            <CardActionArea
-              onClick={() => setPaymentType('stripeCard')}
+    <Box>
+      <Typography 
+        variant="h5" 
+        sx={{ 
+          mb: 3, 
+          fontWeight: 600,
+          color: 'text.primary',
+          fontSize: { xs: '1.25rem', md: '1.5rem' }
+        }}
+      >
+        {t('checkout.payment.title', 'Способ оплаты')}
+      </Typography>
+
+      {/* Security Badge */}
+      <Paper
+        elevation={0}
+        sx={{
+          p: 2,
+          mb: 3,
+          bgcolor: 'success.light',
+          color: 'success.contrastText',
+          borderRadius: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1,
+        }}
+      >
+        <SecurityIcon fontSize="small" />
+        <Typography variant="body2" sx={{ fontWeight: 500 }}>
+          {t('checkout.payment.secure_payment', 'Безопасная оплата с SSL шифрованием')}
+        </Typography>
+      </Paper>
+
+      <Stack spacing={3}>
+        {/* Payment Method Selection */}
+        <FormControl component="fieldset" fullWidth>
+          <RadioGroup
+            aria-label="Payment options"
+            name="paymentType"
+            value={paymentType}
+            onChange={handlePaymentTypeChange}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+            }}
+          >
+            <Card 
+              selected={paymentType === 'stripeCard'}
               sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
-                },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: 3,
                 },
               }}
             >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CreditCardRoundedIcon
-                  fontSize="small"
-                  sx={[
-                    (theme) => ({
-                      color: 'grey.400',
-                      ...theme.applyStyles('dark', {
-                        color: 'grey.600',
-                      }),
-                    }),
-                    paymentType === 'stripeCard' && {
-                      color: 'primary.main',
-                    },
-                  ]}
-                />
-                <Typography sx={{ fontWeight: 'medium' }}>{t('checkout.payment.secure_card')}</Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          <Card selected={paymentType === 'creditCard'}>
-            <CardActionArea
-              onClick={() => setPaymentType('creditCard')}
+              <CardActionArea
+                onClick={() => setPaymentType('stripeCard')}
+                sx={{
+                  p: 2,
+                  '.MuiCardActionArea-focusHighlight': {
+                    backgroundColor: 'transparent',
+                  },
+                  '&:focus-visible': {
+                    backgroundColor: 'action.hover',
+                  },
+                }}
+              >
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  <CreditCardRoundedIcon
+                    sx={{
+                      color: paymentType === 'stripeCard' ? 'primary.main' : 'grey.400',
+                      fontSize: '2rem',
+                    }}
+                  />
+                  <Box sx={{ flex: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                      {t('checkout.payment.secure_card', 'Банковская карта')}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                      {t('checkout.payment.card_description', 'Visa, Mastercard, American Express')}
+                    </Typography>
+                  </Box>
+                  {paymentType === 'stripeCard' && (
+                    <Chip 
+                      label={t('checkout.payment.recommended', 'Рекомендуется')} 
+                      color="primary" 
+                      size="small"
+                      sx={{ fontWeight: 600 }}
+                    />
+                  )}
+                </Stack>
+              </CardActionArea>
+            </Card>
+            <Card 
+              selected={paymentType === 'creditCard'}
               sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
-                },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: 3,
                 },
               }}
             >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CreditCardRoundedIcon
-                  fontSize="small"
-                  sx={[
-                    (theme) => ({
-                      color: 'grey.400',
-                      ...theme.applyStyles('dark', {
-                        color: 'grey.600',
-                      }),
-                    }),
-                    paymentType === 'creditCard' && {
-                      color: 'primary.main',
-                    },
-                  ]}
-                />
-                <Typography sx={{ fontWeight: 'medium' }}>{t('checkout.payment.card')}</Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          <Card selected={paymentType === 'bankTransfer'}>
-            <CardActionArea
-              onClick={() => setPaymentType('bankTransfer')}
+              <CardActionArea
+                onClick={() => setPaymentType('creditCard')}
+                sx={{
+                  p: 2,
+                  '.MuiCardActionArea-focusHighlight': {
+                    backgroundColor: 'transparent',
+                  },
+                  '&:focus-visible': {
+                    backgroundColor: 'action.hover',
+                  },
+                }}
+              >
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  <CreditCardRoundedIcon
+                    sx={{
+                      color: paymentType === 'creditCard' ? 'primary.main' : 'grey.400',
+                      fontSize: '2rem',
+                    }}
+                  />
+                  <Box sx={{ flex: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                      {t('checkout.payment.card', 'Кредитная карта')}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                      {t('checkout.payment.manual_entry', 'Ручной ввод данных карты')}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardActionArea>
+            </Card>
+            <Card 
+              selected={paymentType === 'bankTransfer'}
               sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
-                },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: 3,
                 },
               }}
             >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <AccountBalanceRoundedIcon
-                  fontSize="small"
-                  sx={[
-                    (theme) => ({
-                      color: 'grey.400',
-                      ...theme.applyStyles('dark', {
-                        color: 'grey.600',
-                      }),
-                    }),
-                    paymentType === 'bankTransfer' && {
-                      color: 'primary.main',
-                    },
-                  ]}
-                />
-                <Typography sx={{ fontWeight: 'medium' }}>{t('checkout.payment.bank_account')}</Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+              <CardActionArea
+                onClick={() => setPaymentType('bankTransfer')}
+                sx={{
+                  p: 2,
+                  '.MuiCardActionArea-focusHighlight': {
+                    backgroundColor: 'transparent',
+                  },
+                  '&:focus-visible': {
+                    backgroundColor: 'action.hover',
+                  },
+                }}
+              >
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  <AccountBalanceRoundedIcon
+                    sx={{
+                      color: paymentType === 'bankTransfer' ? 'primary.main' : 'grey.400',
+                      fontSize: '2rem',
+                    }}
+                  />
+                  <Box sx={{ flex: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                      {t('checkout.payment.bank_account', 'Банковский перевод')}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                      {t('checkout.payment.bank_description', 'Перевод на банковский счет')}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardActionArea>
+            </Card>
         </RadioGroup>
       </FormControl>
       
@@ -467,6 +540,7 @@ export default function PaymentForm() {
           />
         </Stack>
       )}
-    </Stack>
+      </Stack>
+    </Box>
   );
 }

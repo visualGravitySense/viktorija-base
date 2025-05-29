@@ -22,6 +22,7 @@ import Instructors from '../components/marketing-page/components/Instructors.tsx
 import SEO from '../components/shared/SEO.tsx';
 import { LocalBusinessSchema } from '../components/shared/StructuredData.tsx';
 import { useTranslation } from 'react-i18next';
+import { getAssetPath } from '../utils/paths';
 import ourMissionImg from '/our-mission.jpg';
 
 
@@ -106,13 +107,13 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean, tog
         <PhotoGallery
           title={t('about.gallery.title')}
           images={[
-            { src: '/a-kategooria-22.jpg', alt: 'A-категория', caption: t('about.gallery.captions.1') },
-            { src: '/kool-1-1024x581.jpg', alt: 'Учебный класс 1', caption: t('about.gallery.captions.2') },
-            { src: '/kool-2-1024x581.jpg', alt: 'Учебный класс 2', caption: t('about.gallery.captions.3') },
-            { src: '/kool-3.jpg', alt: 'Учебный класс 3', caption: t('about.gallery.captions.4') },
-            { src: '/loppastmekoolitus-libedasoit-7.jpg', alt: 'Ледовая площадка 1', caption: t('about.gallery.captions.5') },
-            { src: '/loppastmekoolitus-libedasoit-12.jpg', alt: 'Ледовая площадка 2', caption: t('about.gallery.captions.6') },
-            // { src: '/Pasted-image-20250116161444.png', alt: 'Сертификат', caption: 'Наши достижения' },
+            { src: getAssetPath('a-kategooria-22.jpg'), alt: 'A-категория', caption: t('about.gallery.captions.1') },
+            { src: getAssetPath('kool-1-1024x581.jpg'), alt: 'Учебный класс 1', caption: t('about.gallery.captions.2') },
+            { src: getAssetPath('kool-2-1024x581.jpg'), alt: 'Учебный класс 2', caption: t('about.gallery.captions.3') },
+            { src: getAssetPath('kool-3.jpg'), alt: 'Учебный класс 3', caption: t('about.gallery.captions.4') },
+            { src: getAssetPath('loppastmekoolitus-libedasoit-7.jpg'), alt: 'Ледовая площадка 1', caption: t('about.gallery.captions.5') },
+            { src: getAssetPath('loppastmekoolitus-libedasoit-12.jpg'), alt: 'Ледовая площадка 2', caption: t('about.gallery.captions.6') },
+            // { src: getAssetPath('Pasted-image-20250116161444.png'), alt: 'Сертификат', caption: 'Наши достижения' },
           ]}
         />
 

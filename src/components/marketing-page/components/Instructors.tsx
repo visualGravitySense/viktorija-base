@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { getAssetPath } from '../../../utils/paths';
 
 const StyledButton = styled(Button)(({ theme }) => ({
   position: 'relative',
@@ -68,35 +69,35 @@ export default function Instructors({
       id: "igor",
       name: "Игорь Нагорский",
       description: "Основатель и руководитель автошколы \"Viktorija\", опытный инструктор по вождению. Автомобиль: Toyota Corolla",
-      imageUrl: "/igor-ready.png",
+      imageUrl: getAssetPath("igor-ready.png"),
       car: "Toyota Corolla"
     },
     {
       id: "maksim",
       name: "Максим Федоренко",
       description: "Инструктор по вождению, терпеливый и заботливый учитель. Автомобиль: Volkswagen Golf",
-      imageUrl: "/maksim-ready.png",
+      imageUrl: getAssetPath("maksim-ready.png"),
       car: "Volkswagen Golf"
     },
     {
       id: "stanislav",
       name: "Станислав Зигадло",
       description: "Инструктор по вождению, педагогический стаж 18 лет. Автомобиль: Skoda Octavia",
-      imageUrl: "/stas-ready.png",
+      imageUrl: getAssetPath("stas-ready.png"),
       car: "Skoda Octavia"
     },
     {
       id: "ivan",
       name: "Иван Скоробогатов",
       description: "Опытный инструктор, работал экзаменатором АРК более 2,5 лет. Автомобиль: Toyota Yaris",
-      imageUrl: "/ivan-ready.png",
+      imageUrl: getAssetPath("ivan-ready.png"),
       car: "Toyota Yaris"
     },
     {
       id: "andrei",
       name: "Андрей Наан",
       description: "Высококвалифицированный инструктор по вождению категорий B и A. Автомобиль: Volkswagen Polo",
-      imageUrl: "/andrei-ready.png",
+      imageUrl: getAssetPath("andrei-ready.png"),
       car: "Volkswagen Polo"
     }
   ];
@@ -124,7 +125,7 @@ export default function Instructors({
         
         <Grid container spacing={{ xs: 2, sm: 3, md: 5 }} justifyContent="center">
           {instructors.map((instructor) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={instructor.id} sx={{ maxWidth: { md: '33.333%' } }}>
+                          <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }} key={instructor.id} sx={{ maxWidth: { md: '33.333%' } }}>
               <InstructorCard>
                 <Box 
                   component="img" 

@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import { useTranslation } from 'react-i18next';
+import { getAssetPath } from '../../../utils/paths';
 
 interface Product {
   name: string;
@@ -128,27 +129,27 @@ function Info({ totalPrice, transmissionType = 'manual', onTransmissionChange, i
       'igor': {
         name: 'Игорь Нагорский',
         car: 'Toyota Corolla',
-        image: '/igor-ready.png'
+        image: getAssetPath('igor-ready.png')
       },
       'maksim': {
         name: 'Максим Федоренко',
         car: 'Volkswagen Golf',
-        image: '/maksim-ready.png'
+        image: getAssetPath('maksim-ready.png')
       },
       'stanislav': {
         name: 'Станислав Зигадло',
         car: 'Skoda Octavia',
-        image: '/stas-ready.png'
+        image: getAssetPath('stas-ready.png')
       },
       'ivan': {
         name: 'Иван Скоробогатов',
         car: 'Toyota Yaris',
-        image: '/ivan-ready.png'
+        image: getAssetPath('ivan-ready.png')
       },
       'andrei': {
         name: 'Андрей Наан',
         car: 'Volkswagen Polo',
-        image: '/andrei-ready.png'
+        image: getAssetPath('andrei-ready.png')
       }
     };
     
@@ -277,7 +278,7 @@ function Info({ totalPrice, transmissionType = 'manual', onTransmissionChange, i
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Box 
                   component="img"
-                  src="/instructor-avatar.jpg"
+                  src={getAssetPath("instructor-avatar.jpg")}
                   alt="Instructor"
                   sx={{ 
                     width: 60, 

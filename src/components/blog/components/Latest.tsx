@@ -8,10 +8,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 
-const authors = [
-  { name: 'Remy Sharp' },
-  { name: 'Travis Howard' },
-];
+
 
 const cardData = [
   {

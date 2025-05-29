@@ -145,12 +145,13 @@ export default function Hero({
             src={imageUrl}
             alt={imageAlt || displayTitle}
             loading="lazy"
-            width="100%"
-            height="auto"
+            width="800"
+            height="600"
             style={{
               borderRadius: '10px',
               display: 'block',
               width: '100%',
+              height: 'auto',
               objectFit: 'cover',
               objectPosition: 'center',
             }}

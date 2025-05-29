@@ -41,6 +41,13 @@ export default function SEO({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       
+      {/* Performance optimization - preconnect to external domains */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://picsum.photos" />
+      <link rel="dns-prefetch" href="https://www.facebook.com" />
+      <link rel="dns-prefetch" href="https://www.google.com" />
+      
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:title" content={fullTitle} />

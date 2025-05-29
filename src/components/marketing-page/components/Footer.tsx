@@ -8,6 +8,9 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import CircularProgress from '@mui/material/CircularProgress';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
@@ -15,8 +18,11 @@ import SitemarkIcon from './SitemarkIcon';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useTranslation } from 'react-i18next';
+import { subscribeToNewsletter } from '../../../firebase/newsletterService';
+import { TelegramIcon, WhatsAppIcon } from '../../icons';
+import { trackEvent, inspectletTrack } from '../../analytics/Analytics';
+import { eventNames } from '../../../config/analytics';
 
 function Copyright() {
   const { t } = useTranslation();
@@ -35,7 +41,87 @@ function Copyright() {
 
 export default function Footer() {
   const { t } = useTranslation();
-  
+  const [email, setEmail] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [emailError, setEmailError] = React.useState('');
+  const [snackbar, setSnackbar] = React.useState({
+    open: false,
+    message: '',
+    severity: 'success' as 'success' | 'error'
+  });
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setEmail(value);
+    
+    if (value && !validateEmail(value)) {
+      setEmailError(t('errors.invalidEmail'));
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setEmailError(t('errors.required'));
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setEmailError(t('errors.invalidEmail'));
+      return;
+    }
+
+    setIsLoading(true);
+    setEmailError('');
+
+    try {
+      const result = await subscribeToNewsletter(email, 'footer', 'ru');
+      
+      if (result.success) {
+        // Track successful newsletter subscription
+        trackEvent(eventNames.newsletterSubscribe, {
+          source: 'footer',
+          email_domain: email.split('@')[1],
+        });
+        inspectletTrack('newsletter_subscribe', {
+          source: 'footer',
+          success: true,
+        });
+        
+        setSnackbar({
+          open: true,
+          message: result.message,
+          severity: 'success'
+        });
+        setEmail(''); // Очищаем поле после успешной подписки
+      } else {
+        setSnackbar({
+          open: true,
+          message: result.message,
+          severity: 'error'
+        });
+      }
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: 'Произошла ошибка при подписке. Попробуйте еще раз.',
+        severity: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
+  };
+
   return (
     <Container
       sx={{
@@ -67,7 +153,14 @@ export default function Footer() {
         <Stack direction="row" spacing={1} alignItems="center">
           <PhoneIcon fontSize="small" />
           <Typography variant="body2">
-            Телефон/Viber: <Link href="tel:+37253464508" sx={{ color: 'inherit', fontWeight: 'bold' }}>+372 53464508</Link>
+            Телефон/Viber: <Link 
+              href="tel:+37253464508" 
+              sx={{ color: 'inherit', fontWeight: 'bold' }}
+              onClick={() => {
+                trackEvent(eventNames.phoneClick, { source: 'footer' });
+                inspectletTrack('phone_click', { source: 'footer' });
+              }}
+            >+372 53464508</Link>
           </Typography>
         </Stack>
         
@@ -82,6 +175,29 @@ export default function Footer() {
           <FacebookIcon fontSize="small" />
           <Typography variant="body2">
             Facebook: <Link href="https://www.facebook.com/viktorija.autokool" target="_blank" rel="noopener noreferrer" sx={{ color: 'inherit', fontWeight: 'bold' }}>viktorija.autokool</Link>
+          </Typography>
+        </Stack>
+        
+        <Stack direction="row" spacing={1} alignItems="center">
+          <WhatsAppIcon fontSize="small" />
+          <Typography variant="body2">
+            WhatsApp: <Link 
+              href="https://wa.me/37253464508" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              sx={{ color: 'inherit', fontWeight: 'bold' }}
+              onClick={() => {
+                trackEvent(eventNames.whatsappClick, { source: 'footer' });
+                inspectletTrack('whatsapp_click', { source: 'footer' });
+              }}
+            >+372 53464508</Link>
+          </Typography>
+        </Stack>
+        
+        <Stack direction="row" spacing={1} alignItems="center">
+          <TelegramIcon fontSize="small" />
+          <Typography variant="body2">
+            Telegram: <Link href="tg://resolve?phone=37253464508" sx={{ color: 'inherit', fontWeight: 'bold' }}>+372 53464508</Link>
           </Typography>
         </Stack>
       </Box>
@@ -118,11 +234,17 @@ export default function Footer() {
                 size="small"
                 variant="outlined"
                 fullWidth
+                value={email}
+                onChange={handleEmailChange}
+                error={!!emailError}
+                helperText={emailError}
+                type="email"
                 aria-label={t('footer.your_email')}
                 placeholder={t('footer.your_email')}
+                disabled={isLoading}
                 slotProps={{
                   htmlInput: {
-                    autoComplete: 'off',
+                    autoComplete: 'email',
                     'aria-label': t('footer.your_email'),
                   },
                 }}
@@ -132,9 +254,15 @@ export default function Footer() {
                 variant="contained"
                 color="primary"
                 size="small"
-                sx={{ flexShrink: 0 }}
+                onClick={handleSubscribe}
+                disabled={isLoading || !email || !!emailError}
+                sx={{ flexShrink: 0, minWidth: 'auto' }}
               >
-                {t('footer.subscribe_button')}
+                {isLoading ? (
+                  <CircularProgress size={20} color="inherit" />
+                ) : (
+                  t('footer.subscribe_button')
+                )}
               </Button>
             </Stack>
           </Box>
@@ -263,8 +391,44 @@ export default function Footer() {
           >
             <PhoneIcon />
           </IconButton>
+          <IconButton
+            color="inherit"
+            size="small"
+            href="https://wa.me/37253464508"
+            aria-label="WhatsApp"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ alignSelf: 'center' }}
+          >
+            <WhatsAppIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            size="small"
+            href="tg://resolve?phone=37253464508"
+            aria-label="Telegram"
+            sx={{ alignSelf: 'center' }}
+          >
+            <TelegramIcon />
+          </IconButton>
         </Stack>
       </Box>
+      
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity={snackbar.severity}
+          sx={{ width: '100%' }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }

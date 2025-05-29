@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { border: 1px solid #ccc; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Viktorija Logo Generator</h1>
+    <canvas id="logoCanvas" width="300" height="100"></canvas>
+    <br>
+    <canvas id="faviconCanvas" width="64" height="64"></canvas>
+    <br>
+    <button onclick="downloadLogo()">Download Logo</button>
+    <button onclick="downloadFavicon()">Download Favicon</button>
+
+    <script>
+        // Logo Canvas
+        const logoCanvas = document.getElementById('logoCanvas');
+        const logoCtx = logoCanvas.getContext('2d');
+        
+        // Set background
+        logoCtx.fillStyle = 'transparent';
+        logoCtx.fillRect(0, 0, 300, 100);
+        
+        // Set text style
+        logoCtx.fillStyle = '#2c5aa0';
+        logoCtx.font = 'italic 48px "Dancing Script", cursive, serif';
+        logoCtx.textAlign = 'center';
+        logoCtx.textBaseline = 'middle';
+        
+        // Draw text
+        logoCtx.fillText('Viktorija', 150, 50);
+        
+        // Favicon Canvas
+        const faviconCanvas = document.getElementById('faviconCanvas');
+        const faviconCtx = faviconCanvas.getContext('2d');
+        
+        // Set background
+        faviconCtx.fillStyle = '#f8f9fa';
+        faviconCtx.fillRect(0, 0, 64, 64);
+        
+        // Set text style
+        faviconCtx.fillStyle = '#2c5aa0';
+        faviconCtx.font = 'italic 18px "Dancing Script", cursive, serif';
+        faviconCtx.textAlign = 'center';
+        faviconCtx.textBaseline = 'middle';
+        
+        // Draw text
+        faviconCtx.fillText('Viktorija', 32, 32);
+        
+        function downloadLogo() {
+            const link = document.createElement('a');
+            link.download = 'logo.png';
+            link.href = logoCanvas.toDataURL();
+            link.click();
+        }
+        
+        function downloadFavicon() {
+            const link = document.createElement('a');
+            link.download = 'favicon.png';
+            link.href = faviconCanvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html> 

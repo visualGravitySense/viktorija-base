@@ -4,21 +4,24 @@ import Divider from '@mui/material/Divider';
 import AppTheme from '../components/shared-theme/AppTheme.tsx';
 import AppAppBar from '../components/marketing-page/components/AppAppBar.tsx';
 import Hero from '../components/marketing-page/components/Hero.tsx';
-import LogoCollection from '../components/marketing-page/components/LogoCollection.tsx';
-import Highlights from '../components/marketing-page/components/Highlights.tsx';
-import Pricing from '../components/marketing-page/components/Pricing.tsx';
-import Features from '../components/marketing-page/components/Features.tsx';
-import Testimonials from '../components/marketing-page/components/Testimonials.tsx';
-import FAQ from '../components/marketing-page/components/FAQ.tsx';
-import Footer from '../components/marketing-page/components/Footer.tsx';
 import PainPoints from '../components/marketing-page/components/PainPoints.tsx'
 import SEO from '../components/shared/SEO.tsx';
 import { LocalBusinessSchema, FAQSchema, CourseSchema } from '../components/shared/StructuredData.tsx';
+import LazyComponent from '../components/shared/LazyComponent.tsx';
 import { useTranslation } from 'react-i18next';
 import aCatImg from '/a-cat.jpg';
 import bCatImg from '/b-cat.jpg';
 import fCatImg from '/final-cat-1.jpg';
 import mainHeroImg from '/main-hero-1.jpg';
+
+// Lazy load components below the fold
+const LogoCollection = React.lazy(() => import('../components/marketing-page/components/LogoCollection.tsx'));
+const Highlights = React.lazy(() => import('../components/marketing-page/components/Highlights.tsx'));
+const Pricing = React.lazy(() => import('../components/marketing-page/components/Pricing.tsx'));
+const Features = React.lazy(() => import('../components/marketing-page/components/Features.tsx'));
+const Testimonials = React.lazy(() => import('../components/marketing-page/components/Testimonials.tsx'));
+const FAQ = React.lazy(() => import('../components/marketing-page/components/FAQ.tsx'));
+const Footer = React.lazy(() => import('../components/marketing-page/components/Footer.tsx'));
 
 interface MarketingPageProps {
   disableCustomTheme?: boolean;
@@ -182,9 +185,13 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
             }
           ]}
         />
-        <LogoCollection />
+        <LazyComponent>
+          <LogoCollection />
+        </LazyComponent>
 
-        <Features />
+        <LazyComponent>
+          <Features />
+        </LazyComponent>
         
         {/* <AIAssistant 
           title="AI-Powered Marketing Assistant"
@@ -298,13 +305,19 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
         /> */}
 
         <Divider />
-        <Testimonials />
+        <LazyComponent>
+          <Testimonials />
+        </LazyComponent>
 
         <Divider />
-        <Highlights />
+        <LazyComponent>
+          <Highlights />
+        </LazyComponent>
 
         <Divider />
-        <Pricing />
+        <LazyComponent>
+          <Pricing />
+        </LazyComponent>
 
         {/* <UrgencySection 
           title="While You Consider, Your Competitors Are Evolving"
@@ -321,10 +334,14 @@ export default function MarketingPage({ disableCustomTheme, toggleColorMode }: M
         <Divider /> */}
         
         <Divider />
-        <FAQ />
+        <LazyComponent>
+          <FAQ />
+        </LazyComponent>
         
         <Divider />
-        <Footer />
+        <LazyComponent>
+          <Footer />
+        </LazyComponent>
       </div>
     </AppTheme>
   );
