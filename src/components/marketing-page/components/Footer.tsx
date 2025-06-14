@@ -42,9 +42,10 @@ export default function Footer() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: { xs: 4, sm: 8 },
-        py: { xs: 8, sm: 10 },
-        textAlign: { sm: 'center', md: 'left' },
+        gap: { xs: 3, sm: 6 },
+        py: { xs: 4, sm: 8 },
+        textAlign: { xs: 'center', sm: 'left' },
+        px: { xs: 2, sm: 3 },
       }}
     >
       {/* Contact Info Banner */}
@@ -55,32 +56,32 @@ export default function Footer() {
           width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: { xs: 2, sm: 4 },
-          p: 2,
+          gap: { xs: 1.5, sm: 4 },
+          p: { xs: 1.5, sm: 2 },
           bgcolor: 'primary.light',
           borderRadius: 1,
-          mb: 2,
+          mb: { xs: 1, sm: 2 },
           color: 'primary.contrastText',
           flexWrap: 'wrap',
         }}
       >
         <Stack direction="row" spacing={1} alignItems="center">
           <PhoneIcon fontSize="small" />
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             Телефон/Viber: <Link href="tel:+37253464508" sx={{ color: 'inherit', fontWeight: 'bold' }}>+372 53464508</Link>
           </Typography>
         </Stack>
         
         <Stack direction="row" spacing={1} alignItems="center">
           <EmailIcon fontSize="small" />
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             Email: <Link href="mailto:viktorijaautokool@hot.ee" sx={{ color: 'inherit', fontWeight: 'bold' }}>viktorijaautokool@hot.ee</Link>
           </Typography>
         </Stack>
         
         <Stack direction="row" spacing={1} alignItems="center">
           <FacebookIcon fontSize="small" />
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             Facebook: <Link href="https://www.facebook.com/viktorija.autokool" target="_blank" rel="noopener noreferrer" sx={{ color: 'inherit', fontWeight: 'bold' }}>viktorija.autokool</Link>
           </Typography>
         </Stack>
@@ -92,53 +93,63 @@ export default function Footer() {
           flexDirection: { xs: 'column', sm: 'row' },
           width: '100%',
           justifyContent: 'space-between',
+          gap: { xs: 4, sm: 6 },
         }}
       >
+        {/* Newsletter Section */}
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 4,
-            minWidth: { xs: '100%', sm: '60%' },
+            gap: 2,
+            width: { xs: '100%', sm: '60%' },
           }}
         >
-          <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-            <SitemarkIcon />
-            <Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
-              {t('footer.subscribe')}
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-              {t('footer.weekly_updates')}
-            </Typography>
-            <InputLabel htmlFor="email-newsletter">{t('footer.email')}</InputLabel>
-            <Stack direction="row" spacing={1} useFlexGap>
-              <TextField
-                id="email-newsletter"
-                hiddenLabel
-                size="small"
-                variant="outlined"
-                fullWidth
-                aria-label={t('footer.your_email')}
-                placeholder={t('footer.your_email')}
-                slotProps={{
-                  htmlInput: {
-                    autoComplete: 'off',
-                    'aria-label': t('footer.your_email'),
-                  },
-                }}
-                sx={{ width: '250px' }}
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                sx={{ flexShrink: 0 }}
-              >
-                {t('footer.subscribe_button')}
-              </Button>
-            </Stack>
-          </Box>
+          <Typography variant="body2" gutterBottom sx={{ fontWeight: 600, fontSize: { xs: '1rem', sm: '1.1rem' } }}>
+            {t('footer.subscribe')}
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1, fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+            {t('footer.weekly_updates')}
+          </Typography>
+          <InputLabel htmlFor="email-newsletter" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{t('footer.email')}</InputLabel>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} useFlexGap>
+            <TextField
+              id="email-newsletter"
+              hiddenLabel
+              size="small"
+              variant="outlined"
+              fullWidth
+              aria-label={t('footer.your_email')}
+              placeholder={t('footer.your_email')}
+              slotProps={{
+                htmlInput: {
+                  autoComplete: 'off',
+                  'aria-label': t('footer.your_email'),
+                },
+              }}
+              sx={{ 
+                width: { xs: '100%', sm: '250px' },
+                '& .MuiInputBase-root': {
+                  height: { xs: '40px', sm: '36px' }
+                }
+              }}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              sx={{ 
+                flexShrink: 0,
+                height: { xs: '40px', sm: '36px' },
+                width: { xs: '100%', sm: 'auto' }
+              }}
+            >
+              {t('footer.subscribe_button')}
+            </Button>
+          </Stack>
         </Box>
+
+        {/* Navigation Links - Hidden on mobile */}
         <Box
           sx={{
             display: { xs: 'none', sm: 'flex' },
@@ -165,6 +176,8 @@ export default function Footer() {
             {t('navigation.questions')}
           </Link>
         </Box>
+
+        {/* Company Links - Hidden on mobile */}
         <Box
           sx={{
             display: { xs: 'none', sm: 'flex' },
@@ -185,6 +198,8 @@ export default function Footer() {
             {t('footer.press')}
           </Link>
         </Box>
+
+        {/* Contact Links - Hidden on mobile */}
         <Box
           sx={{
             display: { xs: 'none', sm: 'flex' },
@@ -206,33 +221,42 @@ export default function Footer() {
           </Link>
         </Box>
       </Box>
+
+      {/* Bottom Section */}
       <Box
         sx={{
           display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
           justifyContent: 'space-between',
-          pt: { xs: 4, sm: 8 },
+          alignItems: { xs: 'center', sm: 'flex-start' },
+          pt: { xs: 3, sm: 6 },
           width: '100%',
           borderTop: '1px solid',
           borderColor: 'divider',
+          gap: { xs: 2, sm: 0 },
         }}
       >
-        <div>
-          <Link color="text.secondary" variant="body2" href="#">
+        <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+          <Link color="text.secondary" variant="body2" href="#" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             {t('footer.privacy_policy')}
           </Link>
           <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="#" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             {t('footer.terms_of_service')}
           </Link>
           <Copyright />
-        </div>
+        </Box>
         <Stack
           direction="row"
           spacing={1}
           useFlexGap
-          sx={{ justifyContent: 'left', color: 'text.secondary' }}
+          sx={{ 
+            justifyContent: 'center',
+            color: 'text.secondary',
+            mt: { xs: 1, sm: 0 }
+          }}
         >
           <IconButton
             color="inherit"
@@ -241,7 +265,10 @@ export default function Footer() {
             aria-label="Facebook"
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ alignSelf: 'center' }}
+            sx={{ 
+              alignSelf: 'center',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '1.25rem' } }
+            }}
           >
             <FacebookIcon />
           </IconButton>
@@ -250,7 +277,10 @@ export default function Footer() {
             size="small"
             href="mailto:viktorijaautokool@hot.ee"
             aria-label="Email"
-            sx={{ alignSelf: 'center' }}
+            sx={{ 
+              alignSelf: 'center',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '1.25rem' } }
+            }}
           >
             <EmailIcon />
           </IconButton>
@@ -259,7 +289,10 @@ export default function Footer() {
             size="small"
             href="tel:+37253464508"
             aria-label="Phone"
-            sx={{ alignSelf: 'center' }}
+            sx={{ 
+              alignSelf: 'center',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '1.25rem' } }
+            }}
           >
             <PhoneIcon />
           </IconButton>
